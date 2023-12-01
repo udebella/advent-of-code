@@ -1,2 +1,4 @@
+const isNumber = (char: string) => !isNaN(Number(char));
+
 export const calibrate = (s: string) =>
-  Number((s.split("").find((char) => !isNaN(Number(char))) ?? "") + s.at(-1));
+  Number((s.split("").find(isNumber) ?? "") + s.at(-1));
