@@ -1,6 +1,8 @@
 const isNumber = (char: string) => !isNaN(Number(char));
-const findFirstNumber = (s: string) => s.split("").find(isNumber);
-const findLastNumber = (s: string) => s.split("").findLast(isNumber);
+
+const findNumber = (fn: 'find' | 'findLast') => (s: string) => s.split("")[fn](isNumber);
+const findFirstNumber = findNumber('find');
+const findLastNumber = findNumber('findLast');
 
 export const calibrate = (s: string) =>
   Number((findFirstNumber(s) ?? "") + findLastNumber(s));
