@@ -6,6 +6,6 @@ const findFirstNumber = findNumber("find");
 const findLastNumber = findNumber("findLast");
 
 export const calibrate = (s: string) =>
-  Number((findFirstNumber(s) ?? "") + findLastNumber(s));
+  Number((findFirstNumber(s) ?? "1") + (findLastNumber(s) ?? '1'));
 
 

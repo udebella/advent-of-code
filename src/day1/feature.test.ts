@@ -1,5 +1,5 @@
-import { describe, expect, it } from "../deps.ts";
-import { calibrate } from "./calibrate.ts";
+import {describe, expect, it} from "../deps.ts";
+import {calibrate} from "./calibrate.ts";
 
 describe("calibration", () => {
   it("calibrates 1abc2 to 12", () => {
@@ -24,5 +24,9 @@ describe("calibration", () => {
 
   it("calibrates 2bcd3e to 23", () => {
     expect(calibrate("2bcd3e")).toBe(23);
+  });
+
+  it("calibrates one to 11", () => {
+    expect(calibrate("one")).toBe(11);
   });
 });
