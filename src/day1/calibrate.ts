@@ -1,1 +1,1 @@
-export const calibrate = (s: string) => 12;
+export const calibrate = (s: string) => Number(1 + s[4]);
