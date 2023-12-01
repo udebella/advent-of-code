@@ -1,1 +1,1 @@
-export const calibrate = (s: string) => Number(s[0] + s[4]);
+export const calibrate = (s: string) => Number(s[0] + s.at(-1));

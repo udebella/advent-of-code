@@ -13,4 +13,8 @@ describe("calibration", () => {
     it("calibrates 2abc3 to 23", () => {
         expect(calibrate('2abc3')).toBe(23);
     });
+
+    it("calibrates 2abcd3 to 23", () => {
+        expect(calibrate('2abcd3')).toBe(23);
+    });
 });
