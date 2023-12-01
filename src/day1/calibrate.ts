@@ -1,4 +1,5 @@
 const isNumber = (char: string) => !isNaN(Number(char));
+const findFirstNumber = (s: string) => s.split("").find(isNumber);
 
 export const calibrate = (s: string) =>
-  Number((s.split("").find(isNumber) ?? "") + s.at(-1));
+  Number((findFirstNumber(s) ?? "") + s.at(-1));
