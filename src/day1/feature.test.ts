@@ -1,6 +1,5 @@
 import {describe, expect, it} from "../deps.ts";
-
-const calibrate = (s: string) => 12;
+import {calibrate} from "./calibrate.ts";
 
 describe("calibration", () => {
     it("calibrates 1abc2 to 12", () => {
