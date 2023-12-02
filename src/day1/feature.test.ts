@@ -69,4 +69,8 @@ describe("calibration", () => {
   it(`calibrates zoneight234 to 14`, () => {
     expect(calibrate("zoneight234")).toBe(14);
   });
+
+  it(`calibrates 7pqrstsixteen to 76`, () => {
+    expect(calibrate("7pqrstsixteen")).toBe(76);
+  });
 });
