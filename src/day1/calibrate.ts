@@ -14,7 +14,7 @@ const readNumbersAsWord = (sentence: string) => {
     .replaceAll("two", "2");
 };
 
-const firstAndLast = (sentence: string) =>
+const keepFirstAndLast = (sentence: string) =>
   `${findFirstNumber(sentence)}${findLastNumber(sentence)}`;
 
-export const calibrate = pipe(readNumbersAsWord, firstAndLast, Number);
+export const calibrate = pipe(readNumbersAsWord, keepFirstAndLast, Number);
