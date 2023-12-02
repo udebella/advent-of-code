@@ -4,6 +4,11 @@ type Round = { red?: number; green?: number; blue?: number };
 const isGamePossible = ({ red = 0, green = 0, blue = 0 }: Round) =>
   red <= 12 && green <= 13 && blue <= 14;
 
+const readGame = (game: string) => {
+  const [, gameId] = game.split(" ");
+  return Number(gameId);
+};
+
 const readRound = (round: string) => {
   const [cubesNumber, cubeType] = round.trim().split(" ");
   return { [cubeType]: Number(cubesNumber) };
@@ -11,9 +16,9 @@ const readRound = (round: string) => {
 
 const parseGame = (gameString: string) => {
   const [game, round] = gameString.split(":");
-  const [, gameId] = game.split(" ");
+
   return ({
-    id: Number(gameId),
+    id: readGame(game),
     rounds: [readRound(round)],
   });
 };
