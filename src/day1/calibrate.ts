@@ -12,7 +12,8 @@ const findLastNumber = findNumber("findLast");
 const readNumbersAsWord = (sentence: string) => {
   return sentence
     .replaceAll("one", "1")
-    .replaceAll("two", "2");
+    .replaceAll("two", "2")
+    .replaceAll("three", "3")
 };
 
 const keepFirstAndLast = (sentence: string) =>
