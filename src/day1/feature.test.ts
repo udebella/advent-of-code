@@ -26,7 +26,7 @@ describe("calibration", () => {
     expect(calibrate("2bcd3e")).toBe(23);
   });
 
-  [["one", 1], ["two", 2], ["three", 3], ["four", 4], ["five", 5], ["six", 6], ["seven", 7], ["eight", 8]].forEach(([numberAsWord, number]) => {
+  [["one", 1], ["two", 2], ["three", 3], ["four", 4], ["five", 5], ["six", 6], ["seven", 7], ["eight", 8], ["nine", 9]].forEach(([numberAsWord, number]) => {
     it(`calibrates ${numberAsWord} to ${number}${number}`, () => {
       expect(calibrate(numberAsWord)).toBe(Number(`${number}${number}`));
     });

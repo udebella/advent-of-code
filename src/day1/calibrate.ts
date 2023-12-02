@@ -19,6 +19,7 @@ const readNumbersAsWord = (sentence: string) => {
     .replaceAll("six", "6")
     .replaceAll("seven", "7")
     .replaceAll("eight", "8")
+    .replaceAll("nine", "9")
 };
 
 const keepFirstAndLast = (sentence: string) =>
