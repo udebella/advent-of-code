@@ -1,9 +1,7 @@
 import {describe, expect, it} from "../deps.ts";
 
 type Game = { red?: number; green?: number; blue?: number };
-const isGamePossible = ({ red = 0, green = 0, blue = 0 }: Game) => {
-  return red <= 12 && green <= 13 && blue <= 14;
-};
+const isGamePossible = ({ red = 0, green = 0, blue = 0 }: Game) => red <= 12 && green <= 13 && blue <= 14;
 
 describe("Day 2", () => {
   describe("red cubes", () => {
