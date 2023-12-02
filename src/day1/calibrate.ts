@@ -23,18 +23,7 @@ const dictionnary = {
 }
 
 const readNumbersAsWord = (sentence: string) => {
-  Object.entries(dictionnary).reduce((acc, [numberAsString, number]) => acc.replaceAll(numberAsString, `${number}`), sentence)
-  return sentence
-    .replaceAll("twone", "2")
-    .replaceAll("one", "1")
-    .replaceAll("two", "2")
-    .replaceAll("three", "3")
-    .replaceAll("four", "4")
-    .replaceAll("five", "5")
-    .replaceAll("six", "6")
-    .replaceAll("seven", "7")
-    .replaceAll("eight", "8")
-    .replaceAll("nine", "9")
+  return Object.entries(dictionnary).reduce((acc, [numberAsString, number]) => acc.replaceAll(numberAsString, `${number}`), sentence)
 };
 
 const keepFirstAndLast = (sentence: string) =>
