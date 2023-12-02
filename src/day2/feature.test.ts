@@ -7,10 +7,10 @@ const isGamePossible = ({ red = 0, green = 0, blue = 0 }: Round) =>
 const parseGame = (gameString: string) => {
   const [game, round] = gameString.split(":");
   const [, gameId] = game.split(" ");
-  const [cubesNumber] = round.trim().split(" ");
+  const [cubesNumber, cubeType] = round.trim().split(" ");
   return ({
     id: Number(gameId),
-    rounds: [{ blue: Number(cubesNumber) }],
+    rounds: [{ [cubeType]: Number(cubesNumber) }],
   });
 };
 
@@ -70,16 +70,22 @@ describe("Day 2", () => {
   });
 
   describe("rounds", () => {
-    it("can read one round with only blue 3 cubes", () => {
+    it("can read one round with only 3 blue cubes", () => {
       const game = parseGame("Game 1: 3 blue");
 
       expect(game.rounds).toEqual([{ blue: 3 }]);
     });
 
-    it("can read one round with only blue 4 cubes", () => {
+    it("can read one round with only 4 blue cubes", () => {
       const game = parseGame("Game 1: 4 blue");
 
       expect(game.rounds).toEqual([{ blue: 4 }]);
+    });
+
+    it("can read one round with only 4 green cubes", () => {
+      const game = parseGame("Game 1: 4 green");
+
+      expect(game.rounds).toEqual([{ green: 4 }]);
     });
   });
 });
