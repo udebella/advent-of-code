@@ -15,7 +15,6 @@ const readNumbersAsWord = (sentence: string) => {
 };
 
 const firstAndLast = (sentence: string) =>
-  (findFirstNumber(sentence)) +
-  (findLastNumber(sentence));
+  `${findFirstNumber(sentence)}${findLastNumber(sentence)}`;
 
 export const calibrate = pipe(readNumbersAsWord, firstAndLast, Number);
