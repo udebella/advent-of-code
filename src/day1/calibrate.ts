@@ -1,7 +1,8 @@
 const pipe = (...fns: any) => (param: any) =>
   fns.reduce((acc: any, fn: any) => fn(acc), param);
 const not = (value: boolean) => !value;
-const isNumber = pipe(Number, isNaN, not);
+const convertToNumber = Number;
+const isNumber = pipe(convertToNumber, isNaN, not);
 
 const findNumber = (fn: "find" | "findLast") => (s: string) =>
   s.split("")[fn](isNumber) ?? "";
@@ -17,4 +18,8 @@ const readNumbersAsWord = (sentence: string) => {
 const keepFirstAndLast = (sentence: string) =>
   `${findFirstNumber(sentence)}${findLastNumber(sentence)}`;
 
-export const calibrate = pipe(readNumbersAsWord, keepFirstAndLast, Number);
+export const calibrate = pipe(
+  readNumbersAsWord,
+  keepFirstAndLast,
+  convertToNumber,
+);
