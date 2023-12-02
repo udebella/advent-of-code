@@ -1,6 +1,7 @@
-const pipe = (...fns: any) => fns.reduce((acc: any, fn: any) => fn(acc));
+const pipe = (...fns: any) => (param: any) =>
+  fns.reduce((acc: any, fn: any) => fn(acc), param);
 const not = (value: boolean) => !value;
-const isNumber = (char: string) => pipe(char, Number, isNaN, not);
+const isNumber = pipe(Number, isNaN, not);
 
 const findNumber = (fn: "find" | "findLast") => (s: string) =>
   s.split("")[fn](isNumber) ?? "";
