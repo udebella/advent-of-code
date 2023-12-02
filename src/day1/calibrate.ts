@@ -23,6 +23,7 @@ const dictionnary = {
 }
 
 const readNumbersAsWord = (sentence: string) => {
+  Object.entries(dictionnary).reduce((acc, [numberAsString, number]) => acc.replaceAll(numberAsString, `${number}`), sentence)
   return sentence
     .replaceAll("twone", "2")
     .replaceAll("one", "1")
