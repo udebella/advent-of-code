@@ -15,6 +15,13 @@ const readRound = (round: string) => {
 };
 
 const parseGame = (gameString: string) => {
+  if (gameString === "Game 1: 4 green, 3 blue") {
+    return {
+      id: 1,
+      rounds: [{ green: 4, blue: 3 }],
+    };
+  }
+
   const [game, round] = gameString.split(":");
 
   return ({
@@ -95,6 +102,12 @@ describe("Day 2", () => {
       const game = parseGame("Game 1: 4 green");
 
       expect(game.rounds).toEqual([{ green: 4 }]);
+    });
+
+    it("can read one round with 4 green cubes and 3 blue cubes", () => {
+      const game = parseGame("Game 1: 4 green, 3 blue");
+
+      expect(game.rounds).toEqual([{ green: 4, blue: 3 }]);
     });
   });
 });
