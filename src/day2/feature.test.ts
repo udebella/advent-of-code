@@ -1,11 +1,8 @@
-import { describe, expect, it } from "../deps.ts";
+import {describe, expect, it} from "../deps.ts";
 
 type Game = { red?: number; green?: number; blue?: number };
-const isGamePossible = ({ red = 0, green = 0, blue }: Game) => {
-  if (blue === 15) {
-    return false;
-  }
-  return red <= 12 && green <= 13;
+const isGamePossible = ({ red = 0, green = 0, blue = 0 }: Game) => {
+  return red <= 12 && green <= 13 && blue <= 14;
 };
 
 describe("Day 2", () => {
@@ -35,7 +32,7 @@ describe("Day 2", () => {
     });
 
     it("is not possible when displaying more than 14 blue cubes", () => {
-      expect(isGamePossible({ blue: 15 })).toBe(false);
+      expect(isGamePossible({ blue: 16 })).toBe(false);
     });
   });
 });
