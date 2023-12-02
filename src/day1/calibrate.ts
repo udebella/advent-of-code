@@ -19,12 +19,15 @@ const dictionnary = {
   six: 6,
   seven: 7,
   eight: 8,
-  nine: 9
-}
-
-const readNumbersAsWord = (sentence: string) => {
-  return Object.entries(dictionnary).reduce((acc, [numberAsString, number]) => acc.replaceAll(numberAsString, `${number}`), sentence)
+  nine: 9,
 };
+
+const readNumbersAsWord = (sentence: string) =>
+  Object.entries(dictionnary).reduce(
+    (acc, [numberAsString, number]) =>
+      acc.replaceAll(numberAsString, `${number}`),
+    sentence,
+  );
 
 const keepFirstAndLast = (sentence: string) =>
   `${findFirstNumber(sentence)}${findLastNumber(sentence)}`;
