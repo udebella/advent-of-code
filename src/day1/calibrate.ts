@@ -9,6 +9,19 @@ const findNumber = (fn: "find" | "findLast") => (s: string) =>
 const findFirstNumber = findNumber("find");
 const findLastNumber = findNumber("findLast");
 
+const dictionnary = {
+  twone: 2,
+  one: 1,
+  two: 2,
+  three: 3,
+  four: 4,
+  five: 5,
+  six: 6,
+  seven: 7,
+  eight: 8,
+  nine: 9
+}
+
 const readNumbersAsWord = (sentence: string) => {
   return sentence
     .replaceAll("twone", "2")
