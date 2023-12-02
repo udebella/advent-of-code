@@ -1,15 +1,15 @@
-import {describe, expect, it} from "../deps.ts";
+import { describe, expect, it } from "../deps.ts";
 
 type Round = { red?: number; green?: number; blue?: number };
 const isGamePossible = ({ red = 0, green = 0, blue = 0 }: Round) =>
   red <= 12 && green <= 13 && blue <= 14;
 
 const parseGame = (gameString: string) => {
-    const [game] = gameString.split(':');
-    const [, gameId] = game.split(' ')
-    return ({
-        id: Number(gameId),
-    });
+  const [game] = gameString.split(":");
+  const [, gameId] = game.split(" ");
+  return ({
+    id: Number(gameId),
+  });
 };
 
 describe("Day 2", () => {
