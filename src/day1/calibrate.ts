@@ -8,14 +8,14 @@ const findFirstNumber = findNumber("find");
 const findLastNumber = findNumber("findLast");
 
 const readNumbersAsWord = (sentence: string) => {
-    return sentence
-        .replaceAll("one", "1")
-        .replaceAll("two", "2");
-}
+  return sentence
+    .replaceAll("one", "1")
+    .replaceAll("two", "2");
+};
 
 export const calibrate = (word: string) => {
-  const replacedWords = readNumbersAsWord(word)
-  return Number(
-    (findFirstNumber(replacedWords)) + (findLastNumber(replacedWords)),
-  );
+  const replacedWords = readNumbersAsWord(word);
+  const firstAndLast = (findFirstNumber(replacedWords)) +
+    (findLastNumber(replacedWords));
+  return Number(firstAndLast);
 };
