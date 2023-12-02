@@ -10,7 +10,6 @@ const findFirstNumber = findNumber("find");
 const findLastNumber = findNumber("findLast");
 
 const dictionnary = {
-  twone: 2,
   one: 1,
   two: 2,
   three: 3,
@@ -23,7 +22,9 @@ const dictionnary = {
 };
 
 const readNumbersAsWord = (sentence: string) =>
-  Object.entries(dictionnary).reduce(
+  Object.entries(dictionnary)
+      .sort(([a], [b]) => sentence.indexOf(a) - sentence.indexOf(b))
+      .reduce(
     (acc, [numberAsString, number]) =>
       acc.replaceAll(numberAsString, `${number}`),
     sentence,
