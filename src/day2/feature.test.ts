@@ -23,10 +23,11 @@ const parseGame = (gameString: string) => {
   }
 
   const [game, round] = gameString.split(":");
+  const [cube1, cube2] = round.trim().split(",").map(readCubes);
 
   return ({
     id: readGame(game),
-    rounds: [readCubes(round)],
+    rounds: [{ ...cube1, ...cube2 }],
   });
 };
 
