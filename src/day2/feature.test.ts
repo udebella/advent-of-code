@@ -30,7 +30,11 @@ describe("Day 2", () => {
   });
 
   describe("blue cubes", () => {
-    it("is not possible when displaying more than 14 green cubes", () => {
+    it("is possible when displaying less than 14 blue cubes", () => {
+      expect(isGamePossible({ blue: 14 })).toBe(true);
+    });
+
+    it("is not possible when displaying more than 14 blue cubes", () => {
       expect(isGamePossible({ blue: 15 })).toBe(false);
     });
   });
