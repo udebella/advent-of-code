@@ -42,8 +42,8 @@ describe("calibration", () => {
     });
   });
 
-  it(`calibrates twone to 22`, () => {
-    expect(calibrate("twone")).toBe(22);
+  it(`calibrates twone to 21`, () => {
+    expect(calibrate("twone")).toBe(21);
   });
 
   it(`calibrates two1nine to 29`, () => {
@@ -72,5 +72,17 @@ describe("calibration", () => {
 
   it(`calibrates 7pqrstsixteen to 76`, () => {
     expect(calibrate("7pqrstsixteen")).toBe(76);
+  });
+
+  it(`calibrates oneigthoneight to 18`, () => {
+    expect(calibrate("oneigthoneight")).toBe(18);
+  });
+
+  it(`calibrates z7onetwonec to 71`, () => {
+    expect(calibrate("z7onetwonec")).toBe(71);
+  });
+
+  it(`calibrates boneightfournq6ndnqpdbm97five to 15`, () => {
+    expect(calibrate("boneightfournq6ndnqpdbm97five")).toBe(15);
   });
 });
