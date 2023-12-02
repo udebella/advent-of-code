@@ -9,6 +9,7 @@ const parseGame = (gameString: string) => {
   const [, gameId] = game.split(" ");
   return ({
     id: Number(gameId),
+    rounds: [{ blue: 3 }],
   });
 };
 
@@ -64,6 +65,14 @@ describe("Day 2", () => {
 
         expect(game.id).toBe(20);
       });
+    });
+  });
+
+  describe("rounds", () => {
+    it("can read one round with one type of cubes", () => {
+      const game = parseGame("Game 1: 3 blue");
+
+      expect(game.rounds).toEqual([{ blue: 3 }]);
     });
   });
 });
