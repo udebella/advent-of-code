@@ -46,22 +46,23 @@ describe("Day 2", () => {
   describe("Game parsing", () => {
     describe("game id", () => {
       it("can read game id", () => {
-        expect(
-          parseGame("Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green")
-            .id,
-        ).toBe(1);
+        const game = parseGame(
+          "Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green",
+        );
+
+        expect(game.id).toBe(1);
       });
 
       it("can read game id 2", () => {
-        expect(
-          parseGame("Game 2: 3 blue, 4 red;").id,
-        ).toBe(2);
+        const game = parseGame("Game 2: 3 blue, 4 red;");
+
+        expect(game.id).toBe(2);
       });
 
       it("can read two digit game id", () => {
-        expect(
-          parseGame("Game 20: 3 blue, 4 red;").id,
-        ).toBe(20);
+        const game = parseGame("Game 20: 3 blue, 4 red;");
+
+        expect(game.id).toBe(20);
       });
     });
   });
