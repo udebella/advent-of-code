@@ -9,7 +9,7 @@ const readGame = (game: string) => {
   return Number(gameId);
 };
 
-const readRound = (round: string) => {
+const readCubes = (round: string) => {
   const [cubesNumber, cubeType] = round.trim().split(" ");
   return { [cubeType]: Number(cubesNumber) };
 };
@@ -26,7 +26,7 @@ const parseGame = (gameString: string) => {
 
   return ({
     id: readGame(game),
-    rounds: [readRound(round)],
+    rounds: [readCubes(round)],
   });
 };
 
