@@ -1,11 +1,11 @@
-import { describe, expect, it } from "../deps.ts";
+import {describe, expect, it} from "../deps.ts";
 
 type Round = { red?: number; green?: number; blue?: number };
 const isGamePossible = ({ red = 0, green = 0, blue = 0 }: Round) =>
   red <= 12 && green <= 13 && blue <= 14;
 
 const parseGame = (gameString: string) => ({
-  id: 1,
+  id: Number(gameString[5]),
 });
 
 describe("Day 2", () => {
@@ -40,10 +40,16 @@ describe("Day 2", () => {
   });
 
   describe("Game parsing", () => {
-    it("can parse a game", () => {
+    it("can read game id", () => {
       expect(
         parseGame("Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green"),
       ).toEqual({ id: 1 });
+    });
+
+    it("can read game id 2", () => {
+      expect(
+        parseGame("Game 2: 3 blue, 4 red;"),
+      ).toEqual({ id: 2 });
     });
   });
 });
