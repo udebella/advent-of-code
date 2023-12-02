@@ -26,8 +26,10 @@ describe("calibration", () => {
     expect(calibrate("2bcd3e")).toBe(23);
   });
 
-  it("calibrates one to 11", () => {
-    expect(calibrate("one")).toBe(11);
+  [["one", 1]].forEach(([numberAsWord, number]) => {
+    it(`calibrates ${numberAsWord} to ${number}${number}`, () => {
+      expect(calibrate(numberAsWord)).toBe(Number(`${number}${number}`));
+    });
   });
 
   it("calibrates two to 22", () => {
