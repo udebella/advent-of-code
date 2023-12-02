@@ -69,7 +69,7 @@ describe("Day 2", () => {
   });
 
   describe("rounds", () => {
-    it("can read one round with one type of cubes", () => {
+    it("can read one round with only blue cubes", () => {
       const game = parseGame("Game 1: 3 blue");
 
       expect(game.rounds).toEqual([{ blue: 3 }]);
