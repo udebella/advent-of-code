@@ -29,4 +29,8 @@ describe("calibration", () => {
   it("calibrates one to 11", () => {
     expect(calibrate("one")).toBe(11);
   });
+
+  it("calibrates two to 22", () => {
+    expect(calibrate("two")).toBe(22);
+  });
 });

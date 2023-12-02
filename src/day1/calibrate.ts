@@ -5,7 +5,11 @@ const findNumber = (fn: "find" | "findLast") => (s: string) =>
 const findFirstNumber = findNumber("find");
 const findLastNumber = findNumber("findLast");
 
-export const calibrate = (s: string) =>
-  Number((findFirstNumber(s) ?? "1") + (findLastNumber(s) ?? '1'));
+export const calibrate = (s: string) => {
+    const replacedWords = s
+        .replaceAll('one', '1')
+        .replaceAll('two', '2')
+    return Number((findFirstNumber(replacedWords) ?? "1") + (findLastNumber(replacedWords) ?? '1'));
+};
 
 
