@@ -57,4 +57,8 @@ describe("calibration", () => {
   it(`calibrates xtwone3four to 24`, () => {
     expect(calibrate("xtwone3four")).toBe(24);
   });
+
+  it(`calibrates 4nineeightseven2 to 42`, () => {
+    expect(calibrate("4nineeightseven2")).toBe(42);
+  });
 });
