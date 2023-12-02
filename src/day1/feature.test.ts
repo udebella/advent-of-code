@@ -54,6 +54,10 @@ describe("calibration", () => {
     expect(calibrate("eightwothree")).toBe(83);
   });
 
+  it(`calibrates abcone2threexyz to 13`, () => {
+    expect(calibrate("abcone2threexyz")).toBe(13);
+  });
+
   it(`calibrates xtwone3four to 24`, () => {
     expect(calibrate("xtwone3four")).toBe(24);
   });
