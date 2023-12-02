@@ -53,4 +53,8 @@ describe("calibration", () => {
   it(`calibrates eightwothree to 83`, () => {
     expect(calibrate("eightwothree")).toBe(83);
   });
+
+  it(`calibrates abcone2threexyz to 13`, () => {
+    expect(calibrate("abcone2threexyz")).toBe(13);
+  });
 });
