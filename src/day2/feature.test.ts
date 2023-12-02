@@ -4,9 +4,13 @@ type Round = { red?: number; green?: number; blue?: number };
 const isGamePossible = ({ red = 0, green = 0, blue = 0 }: Round) =>
   red <= 12 && green <= 13 && blue <= 14;
 
-const parseGame = (gameString: string) => ({
-  id: Number(gameString[5]),
-});
+const parseGame = (gameString: string) => {
+    const [game] = gameString.split(':');
+    const [, gameId] = game.split(' ')
+    return ({
+        id: Number(gameId),
+    });
+};
 
 describe("Day 2", () => {
   describe("red cubes", () => {
@@ -50,6 +54,12 @@ describe("Day 2", () => {
       expect(
         parseGame("Game 2: 3 blue, 4 red;"),
       ).toEqual({ id: 2 });
+    });
+
+    it("can read two digit game id", () => {
+      expect(
+        parseGame("Game 20: 3 blue, 4 red;"),
+      ).toEqual({ id: 20 });
     });
   });
 });
