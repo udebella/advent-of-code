@@ -31,4 +31,8 @@ describe("calibration", () => {
       expect(calibrate(numberAsWord)).toBe(Number(`${number}${number}`));
     });
   });
+
+  it(`calibrates twone to 22`, () => {
+    expect(calibrate('twone')).toBe(22);
+  });
 });
