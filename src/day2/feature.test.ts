@@ -1,5 +1,6 @@
 import { describe, expect, it } from "../deps.ts";
 
+type Game = { id: number; rounds: Round[] };
 type Round = { red?: number; green?: number; blue?: number };
 const isGamePossible = ({ red = 0, green = 0, blue = 0 }: Round) =>
   red <= 12 && green <= 13 && blue <= 14;
@@ -9,14 +10,10 @@ const readGame = (game: string) => {
   return Number(gameId);
 };
 
-const readCubes = (round: string) => {
-  const [cubesNumber, cubeType] = round.trim().split(" ");
-  return { [cubeType]: Number(cubesNumber) };
-};
+const readRounds = (rounds: string): Round[] =>
+  rounds.split(";").map(readRound);
 
-const readRounds = (rounds: string) => rounds.split(";").map(readRound);
-
-const readRound = (round: string) =>
+const readRound = (round: string): Round =>
   round.trim().split(",").map(readCubes).reduce(mergeCubes, {});
 
 const mergeCubes = (
@@ -24,7 +21,12 @@ const mergeCubes = (
   next: Record<string, number>,
 ): Record<string, number> => Object.assign(acc, next);
 
-const parseGame = (gameString: string) => {
+const readCubes = (round: string): Round => {
+  const [cubesNumber, cubeType] = round.trim().split(" ");
+  return { [cubeType]: Number(cubesNumber) };
+};
+
+const parseGame = (gameString: string): Game => {
   const [gameAsString, roundsAsString] = gameString.split(":");
 
   return ({
