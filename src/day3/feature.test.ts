@@ -1,11 +1,8 @@
 import { describe, expect, it } from "../deps.ts";
 
 const parseLine = (s: string) => {
-  if (s === ".4") {
-    const value = [...s].find((char) => char !== ".")!;
-    return [{ value: Number(value), x: s.indexOf(value), y: 1 }];
-  }
-  return [{ value: Number(s), x: 0, y: 1 }];
+  const value = [...s].find((char) => char !== ".")!;
+  return [{ value: Number(value), x: s.indexOf(value), y: 1 }];
 };
 
 describe("Day 3", () => {
