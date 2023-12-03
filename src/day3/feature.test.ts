@@ -2,7 +2,8 @@ import { describe, expect, it } from "../deps.ts";
 
 const parseLine = (s: string) => {
   if (s === ".4") {
-    return [{ value: Number([...s].find((char) => char !== ".")), x: 2, y: 1 }];
+    const value = [...s].find((char) => char !== ".");
+    return [{ value: Number(value), x: 2, y: 1 }];
   }
   return [{ value: Number(s), x: 1, y: 1 }];
 };
