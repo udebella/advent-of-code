@@ -23,7 +23,7 @@ describe("Minimum cubes mandatory", () => {
     expect(minimum).toEqual({ blue: 4 });
   });
 
-  it("is needing combines needed cubes between rounds", () => {
+  it("combines needed cubes between rounds", () => {
     const minimum = minimumMandatory({
       id: 1,
       rounds: [{ blue: 4 }, { red: 2 }],
