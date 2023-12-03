@@ -33,10 +33,10 @@ const parseGame = (gameString: string): Game => {
 };
 
 const countPossibleGames = (games: string[]) =>
-  games.map(parseGame).filter(isGamePossible).reduce(
-    (result, { id }) => result + id,
-    0,
-  );
+  games
+    .map(parseGame)
+    .filter(isGamePossible)
+    .reduce((result, { id }) => result + id, 0);
 
 const isGamePossible = ({ rounds }: Game) => rounds.every(isRoundPossible);
 
