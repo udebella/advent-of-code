@@ -13,7 +13,10 @@ const readLineNumbers = (line: string, y: number) => {
 const readLineSpecialCharacters = (
   line: string,
   y: number,
-) => [{ value: [...line].find((char) => char !== "."), x: 0, y }];
+) => {
+  const value = [...line].find((char) => char !== ".")!;
+  return [{ value, x: line.indexOf(value), y }];
+};
 
 describe("Day 3", () => {
   describe("readLineNumbers", () => {
@@ -75,6 +78,12 @@ describe("Day 3", () => {
     it("ignores empty spaces", () => {
       expect(readLineSpecialCharacters("-.", 3)).toEqual([
         { value: "-", x: 0, y: 3 },
+      ]);
+    });
+
+    it("can be in other position than first", () => {
+      expect(readLineSpecialCharacters(".-", 3)).toEqual([
+        { value: "-", x: 1, y: 3 },
       ]);
     });
   });
