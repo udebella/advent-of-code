@@ -33,7 +33,10 @@ const parseGame = (gameString: string): Game => {
 };
 
 const countPossibleGames = (games: string[]) =>
-  games.map(parseGame).reduce((result, { id }) => result + id, 0);
+  games.map(parseGame).filter(isGamePossible).reduce(
+    (result, { id }) => result + id,
+    0,
+  );
 
 const isGamePossible = ({ rounds }: Game) => rounds.every(isRoundPossible);
 
@@ -179,6 +182,15 @@ describe("Day 2", () => {
       ]);
 
       expect(result).toBe(3);
+    });
+
+    it("filters not possible games", () => {
+      const result = countPossibleGames([
+        "Game 1: 30 blue",
+        "Game 2: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green",
+      ]);
+
+      expect(result).toBe(2);
     });
   });
 });
