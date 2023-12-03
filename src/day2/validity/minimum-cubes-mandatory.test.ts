@@ -1,23 +1,5 @@
 import { describe, expect, it } from "../../deps.ts";
-import { Game, Round } from "../game.ts";
-import { mergeCubes } from "../merge-cubes.ts";
-
-const keepMaximumCubes = (
-  maximum: Record<string, number>,
-  nextRound: Record<string, number>,
-): Round => {
-  const commonProperty = Object.keys(maximum)
-    .filter((key) => key in nextRound)
-    .map((commonProperty) => ({
-      [commonProperty]: Math.max(
-        maximum[commonProperty],
-        nextRound[commonProperty],
-      ),
-    }))
-    .reduce(mergeCubes, {});
-  return Object.assign(maximum, nextRound, commonProperty);
-};
-const minimumMandatory = (game: Game) => game.rounds.reduce(keepMaximumCubes);
+import { minimumMandatory } from "./minimum-mandatory.ts";
 
 describe("Minimum cubes mandatory", () => {
   it("is needing 3 reds when there is only one round with 3 reds", () => {
