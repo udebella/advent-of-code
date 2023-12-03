@@ -1,4 +1,4 @@
-import { countPossibleGames } from "./count-possible-games.ts";
+import { countPossibleGames } from "./validity/count-possible-games.ts";
 
 const lines = (await Deno.readTextFile("./input.txt")).split("\n");
 const result = countPossibleGames(lines);

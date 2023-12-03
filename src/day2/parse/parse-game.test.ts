@@ -1,4 +1,4 @@
-import { describe, expect, it } from "../deps.ts";
+import { describe, expect, it } from "../../deps.ts";
 import { parseGame } from "./parse-game.ts";
 
 describe("Day 2", () => {

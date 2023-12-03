@@ -1,5 +1,4 @@
-export type Game = { id: number; rounds: Round[] };
-export type Round = { red?: number; green?: number; blue?: number };
+import { Game, Round } from "../game.ts";
 
 export const parseGame = (gameString: string): Game => {
   const [gameAsString, roundsAsString] = gameString.split(":");
