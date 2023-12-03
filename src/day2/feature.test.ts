@@ -14,12 +14,14 @@ const readCubes = (round: string) => {
   return { [cubeType]: Number(cubesNumber) };
 };
 
+const mergeCubes = (
+  acc: Record<string, number>,
+  next: Record<string, number>,
+): Record<string, number> => Object.assign(acc, next);
+
 const parseGame = (gameString: string) => {
   const [game, round] = gameString.split(":");
-  const round1 = round.trim().split(",").map(readCubes).reduce(
-    (acc, next) => Object.assign(acc, next),
-    {},
-  );
+  const round1 = round.trim().split(",").map(readCubes).reduce(mergeCubes, {});
 
   return ({
     id: readGame(game),
