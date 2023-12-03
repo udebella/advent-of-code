@@ -1,8 +1,5 @@
 import { describe, expect, it } from "../../deps.ts";
-import { Round } from "../game.ts";
-
-const roundPower = (round: Round) =>
-  Object.values(round).reduce((power, next) => power * next);
+import { roundPower } from "./round-power.ts";
 
 describe("Round power", () => {
   it("has a power of 3 when only 3 cubes in the round", () => {
