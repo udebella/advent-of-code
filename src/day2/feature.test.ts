@@ -1,4 +1,4 @@
-import { describe, expect, it } from "../deps.ts";
+import {describe, expect, it} from "../deps.ts";
 
 type Game = { id: number; rounds: Round[] };
 type Round = { red?: number; green?: number; blue?: number };
@@ -35,7 +35,7 @@ const parseGame = (gameString: string): Game => {
   });
 };
 
-const countPossibleGames = (games: string[]) =>
+export const countPossibleGames = (games: string[]) =>
   games
     .map(parseGame)
     .filter(isGamePossible)
