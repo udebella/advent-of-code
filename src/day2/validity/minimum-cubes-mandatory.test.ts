@@ -1,7 +1,8 @@
 import { describe, expect, it } from "../../deps.ts";
-import { Game } from "../game.ts";
+import { Game, Round } from "../game.ts";
 
-const minimumMandatory = (game: Game) => game.rounds[0];
+const mergeCubes = (acc: Round, next: Round): Round => Object.assign(acc, next);
+const minimumMandatory = (game: Game) => game.rounds.reduce(mergeCubes);
 
 describe("Minimum cubes mandatory", () => {
   it("is needing 3 reds when there is only one round with 3 reds", () => {
@@ -20,5 +21,14 @@ describe("Minimum cubes mandatory", () => {
     const minimum = minimumMandatory({ id: 1, rounds: [{ blue: 4 }] });
 
     expect(minimum).toEqual({ blue: 4 });
+  });
+
+  it("is needing combines needed cubes between rounds", () => {
+    const minimum = minimumMandatory({
+      id: 1,
+      rounds: [{ blue: 4 }, { red: 2 }],
+    });
+
+    expect(minimum).toEqual({ blue: 4, red: 2 });
   });
 });
