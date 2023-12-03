@@ -32,6 +32,10 @@ const parseGame = (gameString: string): Game => {
   });
 };
 
+const countPossibleGames = (strings: string[]) => {
+  return 1;
+};
+
 describe("Day 2", () => {
   describe("GameIsPossible", () => {
     describe("red cubes", () => {
@@ -124,6 +128,16 @@ describe("Day 2", () => {
           { green: 2 },
         ]);
       });
+    });
+  });
+
+  describe("countPossibleGames", () => {
+    it("gives id for one possible game", () => {
+      const result = countPossibleGames([
+        "Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green",
+      ]);
+
+      expect(result).toBe(1);
     });
   });
 });
