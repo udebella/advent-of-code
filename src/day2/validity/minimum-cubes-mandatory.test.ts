@@ -2,8 +2,18 @@ import { describe, expect, it } from "../../deps.ts";
 import { Game, Round } from "../game.ts";
 
 const keepMaximumCubes = (maximum: Round, nextRound: Round): Round => {
-  if (Object.keys(maximum).find((key) => key in nextRound)) {
-    return maximum;
+  const commonProperty = Object.keys(maximum).find((key) => key in nextRound) as
+    | "red"
+    | "green"
+    | "blue"
+    | undefined;
+  if (commonProperty) {
+    return {
+      [commonProperty]: Math.max(
+        maximum[commonProperty]!,
+        nextRound[commonProperty]!,
+      ),
+    };
   }
   return Object.assign(maximum, nextRound);
 };
