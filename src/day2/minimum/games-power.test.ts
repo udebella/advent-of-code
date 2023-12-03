@@ -1,15 +1,6 @@
 import { describe, it } from "https://deno.land/std@0.190.0/testing/bdd.ts";
 import { expect } from "https://deno.land/x/expect@v0.3.0/expect.ts";
-import { parseGame } from "../parse/parse-game.ts";
-import { minimumMandatory } from "./minimum-mandatory.ts";
-import { roundPower } from "./round-power.ts";
-
-const gamesPower = (gamesAsString: string[]) =>
-  gamesAsString
-    .map(parseGame)
-    .map(minimumMandatory)
-    .map(roundPower)
-    .reduce((result, power) => result + power);
+import { gamesPower } from "./games-power.ts";
 
 describe("Compute games power", () => {
   it("gives power of 48 for game 1", () => {
