@@ -1,13 +1,22 @@
 import { describe, expect, it } from "../deps.ts";
 
 const readLineNumbers = (line: string, y: number) => {
-  return line.split(/[^0-9]/)
-    .filter((string) => string !== "")
-    .map((value) => ({
-      value: Number(value),
-      x: line.indexOf(value),
-      y,
-    }));
+  let result = [];
+  let i = 0;
+  while (i < line.length) {
+    let number = line[i];
+    if (!isNaN(Number(number))) {
+      let j = i + 1;
+      while (j < line.length && !isNaN(Number(line[j]))) {
+        number += line[j++];
+      }
+      result.push({ value: Number(number), x: i, y });
+      i = j + 1;
+    } else {
+      i++;
+    }
+  }
+  return result;
 };
 
 const readLineSpecialCharacters = (
@@ -55,6 +64,13 @@ describe("Day 3", () => {
 
     it("can read the 3rd line", () => {
       expect(readLineNumbers("4", 3)).toEqual([{ value: 4, x: 0, y: 3 }]);
+    });
+
+    it("does not mix multiple occurrence of the same number", () => {
+      expect(readLineNumbers("41.4", 3)).toEqual([
+        { value: 41, x: 0, y: 3 },
+        { value: 4, x: 3, y: 3 },
+      ]);
     });
   });
 
