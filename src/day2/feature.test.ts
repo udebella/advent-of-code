@@ -33,7 +33,8 @@ const parseGame = (gameString: string): Game => {
 };
 
 const countPossibleGames = (strings: string[]) => {
-  return 1;
+  const { id } = parseGame(strings[0]);
+  return id;
 };
 
 describe("Day 2", () => {
@@ -132,12 +133,20 @@ describe("Day 2", () => {
   });
 
   describe("countPossibleGames", () => {
-    it("gives id for one possible game", () => {
+    it("gives 1 for only game 1 possible", () => {
       const result = countPossibleGames([
         "Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green",
       ]);
 
       expect(result).toBe(1);
+    });
+
+    it("gives 2 for only game 2 possible", () => {
+      const result = countPossibleGames([
+        "Game 2: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green",
+      ]);
+
+      expect(result).toBe(2);
     });
   });
 });
