@@ -35,6 +35,10 @@ const parseGame = (gameString: string): Game => {
 const countPossibleGames = (games: string[]) =>
   games.map(parseGame).reduce((result, { id }) => result + id, 0);
 
+const isGamePossible = (param: { id: number; rounds: { red: number }[] }) => {
+  return false;
+};
+
 describe("Day 2", () => {
   describe("RoundIsPossible", () => {
     describe("red cubes", () => {
@@ -65,6 +69,14 @@ describe("Day 2", () => {
       it("is not possible when displaying more than 14 blue cubes", () => {
         expect(isRoundPossible({ blue: 16 })).toBe(false);
       });
+    });
+  });
+
+  describe("gameIsPossible", () => {
+    it("is not possible when round is not possible", () => {
+      const isPossible = isGamePossible({ id: 1, rounds: [{ red: 13 }] });
+
+      expect(isPossible).toBe(false);
     });
   });
 
