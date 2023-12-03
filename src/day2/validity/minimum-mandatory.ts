@@ -3,11 +3,11 @@ import { mergeCubes } from "../merge-cubes.ts";
 
 const keepMaximumCubes = (maximum: Round, nextRound: Round): Round => {
   const properties: (keyof Round)[] = ["red", "green", "blue"];
-  const commonProperty = properties
+  const maximumCommon = properties
     .filter((key) => key in nextRound && key in maximum)
     .map((key) => ({ [key]: Math.max(maximum[key]!, nextRound[key]!) }))
     .reduce(mergeCubes, {});
-  return Object.assign(maximum, nextRound, commonProperty);
+  return Object.assign(maximum, nextRound, maximumCommon);
 };
 
 export const minimumMandatory = (game: Game) =>
