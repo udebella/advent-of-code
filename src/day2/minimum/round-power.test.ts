@@ -4,7 +4,7 @@ import { Round } from "../game.ts";
 const roundPower = (round: Round) => 3;
 
 describe("Round power", () => {
-  it("is needing 3 reds when there is only one round with 3 reds", () => {
+  it("has a power of 3 when only 3 cubes in the round", () => {
     const power = roundPower({ red: 3 });
 
     expect(power).toBe(3);
