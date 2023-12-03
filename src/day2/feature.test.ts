@@ -14,6 +14,9 @@ const readCubes = (round: string) => {
   return { [cubeType]: Number(cubesNumber) };
 };
 
+const readRound = (round: string) =>
+  round.trim().split(",").map(readCubes).reduce(mergeCubes, {});
+
 const mergeCubes = (
   acc: Record<string, number>,
   next: Record<string, number>,
@@ -21,11 +24,10 @@ const mergeCubes = (
 
 const parseGame = (gameString: string) => {
   const [game, round] = gameString.split(":");
-  const round1 = round.trim().split(",").map(readCubes).reduce(mergeCubes, {});
 
   return ({
     id: readGame(game),
-    rounds: [round1],
+    rounds: [readRound(round)],
   });
 };
 
