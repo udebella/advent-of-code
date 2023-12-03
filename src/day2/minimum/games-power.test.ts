@@ -5,10 +5,11 @@ import { minimumMandatory } from "./minimum-mandatory.ts";
 import { roundPower } from "./round-power.ts";
 
 const gamesPower = (gamesAsString: string[]) =>
-  gamesAsString.map(parseGame).map(minimumMandatory).map(roundPower).reduce((
-    result,
-    power,
-  ) => result + power);
+  gamesAsString
+    .map(parseGame)
+    .map(minimumMandatory)
+    .map(roundPower)
+    .reduce((result, power) => result + power);
 
 describe("Compute games power", () => {
   it("gives power of 48 for game 1", () => {
