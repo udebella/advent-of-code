@@ -2,7 +2,7 @@ import { describe, expect, it } from "../deps.ts";
 
 const parseLine = (s: string) => {
   return s.split(/[^0-9]/)
-    .filter((string) => string !== "" && !isNaN(Number(string)))
+    .filter((string) => string !== "")
     .map((value) => ({ value: Number(value), x: s.indexOf(value), y: 1 }));
 };
 
