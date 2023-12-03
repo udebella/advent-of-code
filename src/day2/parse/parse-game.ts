@@ -18,7 +18,7 @@ const readRounds = (rounds: string): Round[] =>
   rounds.split(";").map(readRound);
 
 const readRound = (round: string): Round =>
-  round.trim().split(",").map(readCubes).reduce(mergeCubes, {});
+  round.trim().split(",").map(readCubes).reduce(mergeCubes);
 
 const mergeCubes = (acc: Round, next: Round): Round => Object.assign(acc, next);
 
