@@ -1,19 +1,19 @@
 import { describe, expect, it } from "../deps.ts";
 
-const readLineNumbers = (s: string, y: number) => {
-  return s.split(/[^0-9]/)
+const readLineNumbers = (line: string, y: number) => {
+  return line.split(/[^0-9]/)
     .filter((string) => string !== "")
     .map((value) => ({
       value: Number(value),
-      x: s.indexOf(value),
+      x: line.indexOf(value),
       y,
     }));
 };
 
 const readLineSpecialCharacters = (
-  s: string,
+  line: string,
   y: number,
-) => [{ value: s, x: 0, y }];
+) => [{ value: line, x: 0, y }];
 
 describe("Day 3", () => {
   describe("readLineNumbers", () => {
