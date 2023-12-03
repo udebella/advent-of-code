@@ -15,13 +15,6 @@ const readCubes = (round: string) => {
 };
 
 const parseGame = (gameString: string) => {
-  if (gameString === "Game 1: 4 green, 3 blue") {
-    return {
-      id: 1,
-      rounds: [{ green: 4, blue: 3 }],
-    };
-  }
-
   const [game, round] = gameString.split(":");
   const [cube1, cube2] = round.trim().split(",").map(readCubes);
 
