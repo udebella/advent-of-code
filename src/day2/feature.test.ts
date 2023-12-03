@@ -32,9 +32,8 @@ const parseGame = (gameString: string): Game => {
   });
 };
 
-const countPossibleGames = (strings: string[]) => {
-  return strings.map(parseGame).reduce((acc, { id }) => acc + id, 0);
-};
+const countPossibleGames = (strings: string[]) =>
+  strings.map(parseGame).reduce((acc, { id }) => acc + id, 0);
 
 describe("Day 2", () => {
   describe("GameIsPossible", () => {
