@@ -1,21 +1,21 @@
 import { describe, expect, it } from "../../deps.ts";
 import { Game, Round } from "../game.ts";
+import { mergeCubes } from "../merge-cubes.ts";
 
-const keepMaximumCubes = (maximum: Round, nextRound: Round): Round => {
-  const commonProperty = Object.keys(maximum).find((key) => key in nextRound) as
-    | "red"
-    | "green"
-    | "blue"
-    | undefined;
-  if (commonProperty) {
-    return {
+const keepMaximumCubes = (
+  maximum: Record<string, number>,
+  nextRound: Record<string, number>,
+): Round => {
+  const commonProperty = Object.keys(maximum)
+    .filter((key) => key in nextRound)
+    .map((commonProperty) => ({
       [commonProperty]: Math.max(
-        maximum[commonProperty]!,
-        nextRound[commonProperty]!,
+        maximum[commonProperty],
+        nextRound[commonProperty],
       ),
-    };
-  }
-  return Object.assign(maximum, nextRound);
+    }))
+    .reduce(mergeCubes, {});
+  return Object.assign(maximum, nextRound, commonProperty);
 };
 const minimumMandatory = (game: Game) => game.rounds.reduce(keepMaximumCubes);
 
@@ -54,5 +54,14 @@ describe("Minimum cubes mandatory", () => {
     });
 
     expect(minimum).toEqual({ blue: 4 });
+  });
+
+  it("can match multiple common cubes between rounds", () => {
+    const minimum = minimumMandatory({
+      id: 1,
+      rounds: [{ blue: 4, red: 2 }, { blue: 2, red: 7 }],
+    });
+
+    expect(minimum).toEqual({ blue: 4, red: 7 });
   });
 });
