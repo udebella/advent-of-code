@@ -1,6 +1,6 @@
 import { describe, expect, it } from "../deps.ts";
 
-const parseLine = (s: string, y: number = 1) => {
+const parseLine = (s: string, y: number) => {
   return s.split(/[^0-9]/)
     .filter((string) => string !== "")
     .map((value) => ({
