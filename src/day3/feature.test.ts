@@ -1,8 +1,9 @@
 import { describe, expect, it } from "../deps.ts";
 
 const parseLine = (s: string) => {
-  const [value] = s.split(".").filter((string) => string !== "");
-  return [{ value: Number(value), x: s.indexOf(value), y: 1 }];
+  return s.split(".")
+    .filter((string) => string !== "")
+    .map((value) => ({ value: Number(value), x: s.indexOf(value), y: 1 }));
 };
 
 describe("Day 3", () => {
@@ -21,6 +22,13 @@ describe("Day 3", () => {
 
     it("can read one 42 digit in one line with dot", () => {
       expect(parseLine(".42")).toEqual([{ value: 42, x: 1, y: 1 }]);
+    });
+
+    it("can read two numbers on one line", () => {
+      expect(parseLine("4.2")).toEqual([
+        { value: 4, x: 0, y: 1 },
+        { value: 2, x: 2, y: 1 },
+      ]);
     });
   });
 });
