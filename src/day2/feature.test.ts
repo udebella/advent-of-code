@@ -23,11 +23,11 @@ const mergeCubes = (
 ): Record<string, number> => Object.assign(acc, next);
 
 const parseGame = (gameString: string) => {
-  const [game, round] = gameString.split(":");
+  const [game, rounds] = gameString.split(":");
 
   return ({
     id: readGame(game),
-    rounds: [readRound(round)],
+    rounds: rounds.split(";").map(readRound),
   });
 };
 
@@ -111,6 +111,18 @@ describe("Day 2", () => {
       const game = parseGame("Game 1: 4 green, 3 blue");
 
       expect(game.rounds).toEqual([{ green: 4, blue: 3 }]);
+    });
+
+    it("can read multiple rounds", () => {
+      const game = parseGame(
+        "Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green",
+      );
+
+      expect(game.rounds).toEqual([
+        { red: 4, blue: 3 },
+        { red: 1, green: 2, blue: 6 },
+        { green: 2 },
+      ]);
     });
   });
 });
