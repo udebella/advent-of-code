@@ -16,10 +16,7 @@ const readRounds = (rounds: string): Round[] =>
 const readRound = (round: string): Round =>
   round.trim().split(",").map(readCubes).reduce(mergeCubes, {});
 
-const mergeCubes = (
-  acc: Record<string, number>,
-  next: Record<string, number>,
-): Record<string, number> => Object.assign(acc, next);
+const mergeCubes = (acc: Round, next: Round): Round => Object.assign(acc, next);
 
 const readCubes = (round: string): Round => {
   const [cubesNumber, cubeType] = round.trim().split(" ");
