@@ -13,13 +13,13 @@ const readLineNumbers = (line: string, y: number) => {
 const readLineSpecialCharacters = (
   line: string,
   y: number,
-) => {
-  return [...line].map((value, index) => {
-    if (value !== "." && isNaN(Number(value))) {
-      return { value, x: index, y };
-    }
-  }).filter((found) => found !== undefined);
-};
+) =>
+  [...line]
+    .map((value, index) => {
+      if (value !== "." && isNaN(Number(value))) {
+        return { value, x: index, y };
+      }
+    }).filter((found) => found !== undefined);
 
 describe("Day 3", () => {
   describe("readLineNumbers", () => {
