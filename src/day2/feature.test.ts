@@ -2,6 +2,9 @@ import { describe, expect, it } from "../deps.ts";
 
 type Game = { id: number; rounds: Round[] };
 type Round = { red?: number; green?: number; blue?: number };
+
+const isGamePossible = ({ rounds }: Game) => rounds.every(isRoundPossible);
+
 const isRoundPossible = ({ red = 0, green = 0, blue = 0 }: Round) =>
   red <= 12 && green <= 13 && blue <= 14;
 
@@ -37,8 +40,6 @@ const countPossibleGames = (games: string[]) =>
     .map(parseGame)
     .filter(isGamePossible)
     .reduce((result, { id }) => result + id, 0);
-
-const isGamePossible = ({ rounds }: Game) => rounds.every(isRoundPossible);
 
 describe("Day 2", () => {
   describe("RoundIsPossible", () => {
