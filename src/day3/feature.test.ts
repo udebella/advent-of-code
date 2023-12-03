@@ -14,8 +14,11 @@ const readLineSpecialCharacters = (
   line: string,
   y: number,
 ) => {
-  const value = [...line].find((char) => char !== ".")!;
-  return [{ value, x: line.indexOf(value), y }];
+  return [...line].map((value, index) => {
+    if (value !== "." && isNaN(Number(value))) {
+      return { value, x: index, y };
+    }
+  }).filter((found) => found !== undefined);
 };
 
 describe("Day 3", () => {
@@ -84,6 +87,13 @@ describe("Day 3", () => {
     it("can be in other position than first", () => {
       expect(readLineSpecialCharacters(".-", 3)).toEqual([
         { value: "-", x: 1, y: 3 },
+      ]);
+    });
+
+    it("can have multiple special character on the same line", () => {
+      expect(readLineSpecialCharacters("$.-", 3)).toEqual([
+        { value: "$", x: 0, y: 3 },
+        { value: "-", x: 2, y: 3 },
       ]);
     });
   });
