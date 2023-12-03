@@ -12,8 +12,8 @@ const readLineNumbers = (s: string, y: number) => {
 
 const readLineSpecialCharacters = (
   s: string,
-  number: number,
-) => [{ value: s, x: 0, y: 0 }];
+  y: number,
+) => [{ value: s, x: 0, y }];
 
 describe("Day 3", () => {
   describe("readLineNumbers", () => {
@@ -63,6 +63,12 @@ describe("Day 3", () => {
     it("can read different special character alone", () => {
       expect(readLineSpecialCharacters("$", 0)).toEqual([
         { value: "$", x: 0, y: 0 },
+      ]);
+    });
+
+    it("can read another line", () => {
+      expect(readLineSpecialCharacters("-", 3)).toEqual([
+        { value: "-", x: 0, y: 3 },
       ]);
     });
   });
