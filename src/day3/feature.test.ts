@@ -2,7 +2,7 @@ import { describe, expect, it } from "../deps.ts";
 
 const parseLine = (s: string) => {
   return s.split(".")
-    .filter((string) => string !== "")
+    .filter((string) => string !== "" && !isNaN(Number(string)))
     .map((value) => ({ value: Number(value), x: s.indexOf(value), y: 1 }));
 };
 
@@ -29,6 +29,10 @@ describe("Day 3", () => {
         { value: 4, x: 0, y: 1 },
         { value: 2, x: 2, y: 1 },
       ]);
+    });
+
+    it("ignores special characters", () => {
+      expect(parseLine("4.-")).toEqual([{ value: 4, x: 0, y: 1 }]);
     });
   });
 });
