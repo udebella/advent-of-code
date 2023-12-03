@@ -2,7 +2,7 @@ import { describe, expect, it } from "../../deps.ts";
 import { Game, Round } from "../game.ts";
 
 const keepMaximumCubes = (maximum: Round, nextRound: Round): Round => {
-  if (nextRound.blue === 2) {
+  if (Object.keys(maximum).find((key) => key in nextRound)) {
     return maximum;
   }
   return Object.assign(maximum, nextRound);
