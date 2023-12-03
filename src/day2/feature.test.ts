@@ -33,8 +33,7 @@ const parseGame = (gameString: string): Game => {
 };
 
 const countPossibleGames = (strings: string[]) => {
-  const { id } = parseGame(strings[0]);
-  return id;
+  return strings.map(parseGame).reduce((acc, { id }) => acc + id, 0);
 };
 
 describe("Day 2", () => {
@@ -147,6 +146,15 @@ describe("Day 2", () => {
       ]);
 
       expect(result).toBe(2);
+    });
+
+    it("gives sum of possible game id", () => {
+      const result = countPossibleGames([
+        "Game 1: 3 blue",
+        "Game 2: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green",
+      ]);
+
+      expect(result).toBe(3);
     });
   });
 });
