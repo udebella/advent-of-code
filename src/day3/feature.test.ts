@@ -15,7 +15,7 @@ describe("Day 3", () => {
       expect(parseLine("4")).toEqual([{ value: 4, x: 0, y: 1 }]);
     });
 
-    it("can read one 4 digit in one line", () => {
+    it("can read one 4 digit in one line with dot", () => {
       expect(parseLine(".4")).toEqual([{ value: 4, x: 1, y: 1 }]);
     });
   });
