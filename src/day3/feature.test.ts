@@ -11,7 +11,7 @@ const readLineNumbers = (line: string, y: number) => {
         number += line[j++];
       }
       result.push({ value: Number(number), x: i, y });
-      i = j + 1;
+      i = j;
     } else {
       i++;
     }
