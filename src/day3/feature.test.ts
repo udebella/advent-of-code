@@ -4,7 +4,7 @@ const parseLine = (s: string) => [{ value: 3, x: 1, y: 1 }];
 
 describe("Day 3", () => {
   describe("parseLine", () => {
-    it("can read one simple digit in one line", () => {
+    it("can read one 3 digit in one line", () => {
       expect(parseLine("3")).toEqual([{ value: 3, x: 1, y: 1 }]);
     });
   });
