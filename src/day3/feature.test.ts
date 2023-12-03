@@ -10,6 +10,11 @@ const readLineNumbers = (s: string, y: number) => {
     }));
 };
 
+const readLineSpecialCharacters = (
+  s: string,
+  number: number,
+) => [{ value: "-", x: 0, y: 0 }];
+
 describe("Day 3", () => {
   describe("readLineNumbers", () => {
     it("can read one 3 digit in one line", () => {
@@ -45,6 +50,14 @@ describe("Day 3", () => {
 
     it("can read the 3rd line", () => {
       expect(readLineNumbers("4", 3)).toEqual([{ value: 4, x: 0, y: 3 }]);
+    });
+  });
+
+  describe("readLineSpecialCharacters", () => {
+    it("can read one special character alone", () => {
+      expect(readLineSpecialCharacters("-", 0)).toEqual([
+        { value: "-", x: 0, y: 0 },
+      ]);
     });
   });
 });
