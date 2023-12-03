@@ -1,12 +1,12 @@
 import { describe, expect, it } from "../deps.ts";
 
-const parseLine = (s: string, lineNumber: number = 1) => {
+const parseLine = (s: string, y: number = 1) => {
   return s.split(/[^0-9]/)
     .filter((string) => string !== "")
     .map((value) => ({
       value: Number(value),
       x: s.indexOf(value),
-      y: lineNumber,
+      y,
     }));
 };
 
