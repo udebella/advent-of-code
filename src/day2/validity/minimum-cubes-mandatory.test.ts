@@ -1,7 +1,7 @@
 import { describe, expect, it } from "../../deps.ts";
-import { Game, Round } from "../game.ts";
+import { Game } from "../game.ts";
+import { mergeCubes } from "../merge-cubes.ts";
 
-const mergeCubes = (acc: Round, next: Round): Round => Object.assign(acc, next);
 const minimumMandatory = (game: Game) => game.rounds.reduce(mergeCubes);
 
 describe("Minimum cubes mandatory", () => {
