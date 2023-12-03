@@ -1,9 +1,13 @@
 import { describe, expect, it } from "../deps.ts";
 
-const parseLine = (s: string) => {
+const parseLine = (s: string, lineNumber: number = 1) => {
   return s.split(/[^0-9]/)
     .filter((string) => string !== "")
-    .map((value) => ({ value: Number(value), x: s.indexOf(value), y: 1 }));
+    .map((value) => ({
+      value: Number(value),
+      x: s.indexOf(value),
+      y: lineNumber,
+    }));
 };
 
 describe("Day 3", () => {
@@ -37,6 +41,10 @@ describe("Day 3", () => {
 
     it("handles special characters next to number", () => {
       expect(parseLine("4-")).toEqual([{ value: 4, x: 0, y: 1 }]);
+    });
+
+    it("can read the 3rd line", () => {
+      expect(parseLine("4", 3)).toEqual([{ value: 4, x: 0, y: 3 }]);
     });
   });
 });
