@@ -35,7 +35,7 @@ const parseGame = (gameString: string): Game => {
 const countPossibleGames = (games: string[]) =>
   games.map(parseGame).reduce((result, { id }) => result + id, 0);
 
-const isGamePossible = ({ rounds }: Game) => isRoundPossible(rounds[0]);
+const isGamePossible = ({ rounds }: Game) => rounds.every(isRoundPossible);
 
 describe("Day 2", () => {
   describe("RoundIsPossible", () => {
@@ -81,6 +81,15 @@ describe("Day 2", () => {
       const isPossible = isGamePossible({ id: 1, rounds: [{ red: 10 }] });
 
       expect(isPossible).toBe(true);
+    });
+
+    it("is not possible when round 2 is not possible", () => {
+      const isPossible = isGamePossible({
+        id: 1,
+        rounds: [{ red: 10 }, { red: 20 }],
+      });
+
+      expect(isPossible).toBe(false);
     });
   });
 
