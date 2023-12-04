@@ -4,12 +4,11 @@ import { isAdjacentToNumbers } from "./is-adjacent-to-numbers.ts";
 
 const multiply = (a: number, b: number) => a * b;
 
-const countGearsRatio = ({ numbers, specialCharacters }: Game) => {
-  return specialCharacters
+const countGearsRatio = ({ numbers, specialCharacters }: Game) =>
+  specialCharacters
     .flatMap(isAdjacentToNumbers(numbers))
     .map(({ value }) => value)
     .reduce(multiply, specialCharacters.length ? 1 : 0);
-};
 
 describe("count gears ratio", () => {
   it("does not keep any numbers when no specialCharacters", () => {
