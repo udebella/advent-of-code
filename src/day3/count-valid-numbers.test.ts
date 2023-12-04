@@ -3,16 +3,13 @@ import { Game } from "./read-game.ts";
 
 const sum = (a: number, b: number) => a + b;
 
-const countValidNumbers = (game: Game) => {
-  return game.specialCharacters.length
-    ? game.numbers.filter(({ x: numberX }) =>
-      game.specialCharacters.find(({ x: specialCharacterX }) =>
-        numberX - 1 === specialCharacterX ||
-        numberX + 1 === specialCharacterX
-      )
-    ).map(({ value }) => value).reduce(sum, 0)
-    : 0;
-};
+const countValidNumbers = (game: Game) =>
+  game.numbers.filter(({ x: numberX }) =>
+    game.specialCharacters.find(({ x: specialCharacterX }) =>
+      numberX - 1 === specialCharacterX ||
+      numberX + 1 === specialCharacterX
+    )
+  ).map(({ value }) => value).reduce(sum, 0);
 
 describe("count valid numbers", () => {
   it("does not keep any numbers when no specialCharacters", () => {
