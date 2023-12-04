@@ -11,27 +11,29 @@ const readLine = (line: string) => {
 };
 
 describe("Read line", () => {
-  it("can read winning numbers from line", () => {
-    const line = readLine("Card 1: 1 | 2");
+  describe("winning numbers", () => {
+    it("can read winning numbers from line", () => {
+      const line = readLine("Card 1: 1 | 2");
 
-    expect(line.winningNumbers).toEqual([1]);
-  });
+      expect(line.winningNumbers).toEqual([1]);
+    });
 
-  it("can read different winning numbers from line", () => {
-    const line = readLine("Card 1: 3 | 2");
+    it("can read different winning numbers from line", () => {
+      const line = readLine("Card 1: 3 | 2");
 
-    expect(line.winningNumbers).toEqual([3]);
-  });
+      expect(line.winningNumbers).toEqual([3]);
+    });
 
-  it("can read different two digit winning numbers from line", () => {
-    const line = readLine("Card 1: 33 | 2");
+    it("can read different two digit winning numbers from line", () => {
+      const line = readLine("Card 1: 33 | 2");
 
-    expect(line.winningNumbers).toEqual([33]);
-  });
+      expect(line.winningNumbers).toEqual([33]);
+    });
 
-  it("can read multiple winning numbers from line", () => {
-    const line = readLine("Card 1: 1 2 | 2");
+    it("can read multiple winning numbers from line", () => {
+      const line = readLine("Card 1: 1 2 | 2");
 
-    expect(line.winningNumbers).toEqual([1, 2]);
+      expect(line.winningNumbers).toEqual([1, 2]);
+    });
   });
 });
