@@ -2,22 +2,25 @@ import { describe, expect, it } from "../deps.ts";
 
 const isNumber = (string: string): boolean => !isNaN(Number(string));
 
-type LineNumbers = { value: number; x: number; y: number };
-const readLineNumbers = (line: string, y: number, index = 0): LineNumbers[] => {
-  if (line === "") {
-    return [];
-  }
-  const [currentNumber] = line.split(/[^0-9]/);
-  const currentNumberSize = currentNumber.length + 1;
-  const otherNumbers = readLineNumbers(
-    line.slice(currentNumberSize),
-    y,
-    index + currentNumberSize,
-  );
-  return currentNumber !== "" && isNumber(currentNumber)
-    ? [{ value: Number(currentNumber), x: index, y }, ...otherNumbers]
-    : otherNumbers;
-};
+type LineNumbers = { value: string; x: number; y: number };
+const readLineNumbers = (line: string, y: number) =>
+  [...line]
+    .map((value, index) => ({ value, x: index, y }))
+    .filter(({ value }) => value !== ".")
+    .filter(({ value }) => isNumber(value))
+    .reduce((acc: LineNumbers[], next: LineNumbers) => {
+      const [first, ...rest] = acc;
+      if (next.x === first?.x + 1) {
+        const combined = {
+          value: first.value + next.value,
+          x: first.x,
+          y: first.y,
+        };
+        return [...rest, combined];
+      }
+      return [...acc, next];
+    }, [])
+    .map(({ value, x, y }) => ({ value: Number(value), x, y }));
 
 const readLineSpecialCharacters = (line: string, y: number) =>
   [...line]
