@@ -23,10 +23,11 @@ const readLineNumbers = (line: string, y: number) =>
     .reduce((acc: ParsedElement[], next: ParsedElement) => {
       const [first, ...rest] = acc;
       return isAdjacent(first, next)
-        ? [...rest, combineAdjacentNumbers(first, next)]
-        : [...acc, next];
+        ? [combineAdjacentNumbers(first, next), ...rest]
+        : [next, ...acc];
     }, [])
-    .map(({ value, x, y }) => ({ value: Number(value), x, y }));
+    .map(({ value, x, y }) => ({ value: Number(value), x, y }))
+    .toReversed();
 
 const readLineSpecialCharacters = (line: string, y: number) =>
   [...line]
@@ -75,6 +76,14 @@ describe("Day 3", () => {
       expect(readLineNumbers("41.4", 3)).toEqual([
         { value: 41, x: 0, y: 3 },
         { value: 4, x: 3, y: 3 },
+      ]);
+    });
+
+    it("can read multiple multi digit numbers on the same line", () => {
+      expect(readLineNumbers("11.22.33", 3)).toEqual([
+        { value: 11, x: 0, y: 3 },
+        { value: 22, x: 3, y: 3 },
+        { value: 33, x: 6, y: 3 },
       ]);
     });
   });
