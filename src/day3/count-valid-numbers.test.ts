@@ -1,9 +1,6 @@
 import { describe, expect, it } from "../deps.ts";
+import { Game } from "./read-game.ts";
 
-type Game = {
-  numbers: { x: number; y: number; value: number }[];
-  specialCharacters: any[];
-};
 const countValidNumbers = (game: Game) => {
   return 0;
 };
