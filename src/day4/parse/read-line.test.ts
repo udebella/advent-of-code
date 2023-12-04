@@ -1,12 +1,15 @@
 import { describe, expect, it } from "../../deps.ts";
 
+const readNumbers = (numbers: string) =>
+  numbers.split(" ")
+    .filter((string) => string !== "")
+    .map(Number);
+
 const readLine = (line: string) => {
   const [, numbers] = line.split(":");
   const [winningNumbers, playedNumbers] = numbers.split("|");
   return {
-    playedNumbers: playedNumbers.split(" ")
-      .filter((string) => string !== "")
-      .map(Number),
+    playedNumbers: readNumbers(playedNumbers),
     winningNumbers: winningNumbers.split(" ")
       .filter((string) => string !== "")
       .map(Number),
