@@ -3,7 +3,7 @@ import { Game } from "./read-game.ts";
 
 const countGearsRatio = (game: Game) => {
   if (game.specialCharacters.length) {
-    return 6;
+    return game.numbers.map(({ value }) => value).reduce((a, b) => a * b);
   }
   return 0;
 };
