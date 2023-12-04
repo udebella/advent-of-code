@@ -10,9 +10,7 @@ const isAdjacentToSpecialCharacter =
     const { x: numberX, y: numberY, value } = number;
     const numberSize = `${value}`.length;
     return specialCharacters
-      .find((
-        { x: specialCharacterX, y: specialCharacterY },
-      ) =>
+      .find(({ x: specialCharacterX, y: specialCharacterY }) =>
         numberX - 1 <= specialCharacterX &&
         numberX + numberSize >= specialCharacterX &&
         numberY + 1 >= specialCharacterY
