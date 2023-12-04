@@ -9,26 +9,16 @@ const readLineNumbers = (
   if (line === "") {
     return [];
   }
-  const [first] = line.split(/[^0-9]/);
-  const isNumber = first !== "" && !isNaN(Number(first));
+  const [currentNumber] = line.split(/[^0-9]/);
+  const isNumber = currentNumber !== "" && !isNaN(Number(currentNumber));
+  const otherNumbers = readLineNumbers(
+    line.slice(currentNumber.length + 1),
+    y,
+    index + currentNumber.length + 1,
+  );
   return isNumber
-    ? [
-      {
-        value: Number(first),
-        x: index,
-        y,
-      },
-      ...readLineNumbers(
-        line.slice(first.length + 1),
-        y,
-        index + first.length + 1,
-      ),
-    ]
-    : readLineNumbers(
-      line.slice(first.length + 1),
-      y,
-      index + first.length + 1,
-    );
+    ? [{ value: Number(currentNumber), x: index, y }, ...otherNumbers]
+    : otherNumbers;
 };
 
 const readLineSpecialCharacters = (
