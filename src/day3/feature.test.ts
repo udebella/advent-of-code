@@ -20,11 +20,11 @@ const readLineNumbers = (line: string, y: number) =>
     .map((value, index): ParsedElement => ({ value, x: index, y }))
     .filter(({ value }) => value !== ".")
     .filter(({ value }) => isNumber(value))
-    .reduce((acc: ParsedElement[], next: ParsedElement) => {
-      const [previous, ...rest] = acc;
+    .reduce((accumulator: ParsedElement[], next: ParsedElement) => {
+      const [previous, ...rest] = accumulator;
       return isAdjacent(previous, next)
         ? [combineAdjacentNumbers(previous, next), ...rest]
-        : [next, ...acc];
+        : [next, ...accumulator];
     }, [])
     .map(({ value, x, y }) => ({ value: Number(value), x, y }))
     .toReversed();
