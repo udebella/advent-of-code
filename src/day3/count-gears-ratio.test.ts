@@ -2,13 +2,15 @@ import { describe, expect, it } from "../deps.ts";
 import { Game } from "./read-game.ts";
 import { isAdjacentToNumbers } from "./is-adjacent-to-numbers.ts";
 
+const multiply = (a: number, b: number) => a * b;
+
 const countGearsRatio = (game: Game) => {
   game.specialCharacters
     .flatMap(isAdjacentToNumbers(game.numbers))
     .map(({ value }) => value)
-    .reduce((a, b) => a * b, 1);
+    .reduce(multiply, 1);
   if (game.specialCharacters.length) {
-    return game.numbers.map(({ value }) => value).reduce((a, b) => a * b);
+    return game.numbers.map(({ value }) => value).reduce(multiply);
   }
   return 0;
 };
