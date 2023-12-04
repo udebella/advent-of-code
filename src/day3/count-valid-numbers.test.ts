@@ -10,8 +10,8 @@ const isAdjacentToSpecialCharacter =
     const { x: numberX, value } = number;
     const numberSize = `${value}`.length;
     return specialCharacters.find(({ x: specialCharacterX }) =>
-      numberX - 1 === specialCharacterX ||
-      numberX + numberSize === specialCharacterX
+      numberX - 1 <= specialCharacterX &&
+      numberX + numberSize >= specialCharacterX
     );
   };
 
@@ -63,6 +63,15 @@ describe("count valid numbers", () => {
     const game: Game = {
       numbers: [{ value: 34, x: 0, y: 0 }],
       specialCharacters: [{ value: "$", x: 2, y: 0 }],
+    };
+
+    expect(countValidNumbers(game)).toBe(34);
+  });
+
+  it("takes into account special character that are on next line", () => {
+    const game: Game = {
+      numbers: [{ value: 34, x: 0, y: 0 }],
+      specialCharacters: [{ value: "$", x: 1, y: 1 }],
     };
 
     expect(countValidNumbers(game)).toBe(34);
