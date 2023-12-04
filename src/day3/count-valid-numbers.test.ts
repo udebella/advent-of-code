@@ -6,10 +6,8 @@ import { Number } from "./read-line-numbers.ts";
 const sum = (a: number, b: number) => a + b;
 
 const isAdjacentToSpecialCharacter =
-  (specialCharacters: SpecialCharacter[]) =>
-  (
-    { x: numberX, value }: Number,
-  ) => {
+  (specialCharacters: SpecialCharacter[]) => (number: Number) => {
+    const { x: numberX, value } = number;
     const numberSize = `${value}`.length;
     return specialCharacters.find(({ x: specialCharacterX }) =>
       numberX - 1 === specialCharacterX ||
