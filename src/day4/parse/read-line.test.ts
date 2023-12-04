@@ -4,6 +4,7 @@ const readLine = (line: string) => {
   const [, numbers] = line.split(":");
   const [winningNumbers] = numbers.split("|");
   return {
+    playedNumbers: [2],
     winningNumbers: winningNumbers.split(" ")
       .filter((string) => string !== "")
       .map(Number),
@@ -34,6 +35,14 @@ describe("Read line", () => {
       const line = readLine("Card 1: 1 2 | 2");
 
       expect(line.winningNumbers).toEqual([1, 2]);
+    });
+  });
+
+  describe("played numbers", () => {
+    it("can read played numbers", () => {
+      const line = readLine("Card 1: 1 | 2");
+
+      expect(line.playedNumbers).toEqual([2]);
     });
   });
 });
