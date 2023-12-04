@@ -1,11 +1,12 @@
 import { describe, expect, it } from "../deps.ts";
 
+type LineNumbers = { value: number; x: number; y: number };
 const readLineNumbers = (
   line: string,
   y: number,
   index = 0,
   previousDigits = "",
-): any => {
+): LineNumbers[] => {
   if (line === "") {
     if (previousDigits === "") {
       return [];
