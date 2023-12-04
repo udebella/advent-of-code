@@ -3,9 +3,9 @@ import { Game } from "./read-game.ts";
 
 const sum = (a: number, b: number) => a + b;
 
-const countValidNumbers = (game: Game) =>
-  game.numbers.filter(({ x: numberX }) =>
-    game.specialCharacters.find(({ x: specialCharacterX }) =>
+const countValidNumbers = ({ numbers, specialCharacters }: Game) =>
+  numbers.filter(({ x: numberX }) =>
+    specialCharacters.find(({ x: specialCharacterX }) =>
       numberX - 1 === specialCharacterX ||
       numberX + 1 === specialCharacterX
     )
