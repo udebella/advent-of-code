@@ -2,7 +2,7 @@ import { describe, expect, it } from "../../deps.ts";
 import { Game } from "../parse/read-line.ts";
 
 const computePoints = (game: Game) => {
-  return 0;
+  return game.playedNumbers.length;
 };
 
 describe("Points", () => {
@@ -13,5 +13,14 @@ describe("Points", () => {
     };
 
     expect(computePoints(game)).toBe(0);
+  });
+
+  it("count one point if one played number is in winning list", () => {
+    const game: Game = {
+      winningNumbers: [1],
+      playedNumbers: [1],
+    };
+
+    expect(computePoints(game)).toBe(1);
   });
 });
