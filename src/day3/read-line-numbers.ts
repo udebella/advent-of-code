@@ -18,7 +18,7 @@ export const readLineNumbers = (line: string, y: number): Number[] =>
     .toReversed();
 
 const isAdjacent = (first: ParsedElement | undefined, second: ParsedElement) =>
-  (first?.x ?? -Infinity) + 1 === second.x;
+  (first?.x ?? -Infinity) + (first?.value.length ?? -Infinity) === second.x;
 
 const combineAdjacentNumbers = (
   first: ParsedElement,

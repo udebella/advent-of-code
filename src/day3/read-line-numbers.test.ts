@@ -52,4 +52,10 @@ describe("readLineNumbers", () => {
       { value: 33, x: 6, y: 3 },
     ]);
   });
+
+  it("can read 3 digit numbers", () => {
+    expect(readLineNumbers("111", 3)).toEqual([
+      { value: 111, x: 0, y: 3 },
+    ]);
+  });
 });
