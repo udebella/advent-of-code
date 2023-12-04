@@ -2,9 +2,9 @@ import { describe, expect, it } from "../../deps.ts";
 
 const readLine = (line: string) => {
   const [, numbers] = line.split(":");
-  const [winningNumbers] = numbers.split("|");
+  const [winningNumbers, playedNumbers] = numbers.split("|");
   return {
-    playedNumbers: [Number(line[12])],
+    playedNumbers: [Number(playedNumbers)],
     winningNumbers: winningNumbers.split(" ")
       .filter((string) => string !== "")
       .map(Number),
@@ -49,6 +49,12 @@ describe("Read line", () => {
       const line = readLine("Card 1: 1 | 3");
 
       expect(line.playedNumbers).toEqual([3]);
+    });
+
+    it("can read 2 digits played numbers", () => {
+      const line = readLine("Card 1: 1 | 33");
+
+      expect(line.playedNumbers).toEqual([33]);
     });
   });
 });
