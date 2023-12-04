@@ -11,8 +11,8 @@ const combineAdjacentNumbers = (
   y: first.y,
 });
 
-const isAdjacent = (first: ParsedElement, second: ParsedElement) =>
-  first?.x + 1 === second.x;
+const isAdjacent = (first: ParsedElement | undefined, second: ParsedElement) =>
+  (first?.x ?? -Infinity) + 1 === second.x;
 
 type ParsedElement = { value: string; x: number; y: number };
 const readLineNumbers = (line: string, y: number) =>
