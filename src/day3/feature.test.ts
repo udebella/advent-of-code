@@ -22,8 +22,8 @@ const readLineNumbers = (line: string, y: number, index = 0): LineNumbers[] => {
 const readLineSpecialCharacters = (line: string, y: number) =>
   [...line]
     .map((value, index) => ({ value, x: index, y }))
-    .filter(({ value }) => value !== "." && !isNumber(value))
-    .filter((found) => found !== undefined);
+    .filter(({ value }) => value !== ".")
+    .filter(({ value }) => !isNumber(value));
 
 describe("Day 3", () => {
   describe("readLineNumbers", () => {
