@@ -7,7 +7,9 @@ const multiply = (a: number, b: number) => a * b;
 const countGearsRatio = ({ numbers, specialCharacters }: Game) =>
   specialCharacters
     .filter(({ value }) => value === "*")
-    .flatMap(isAdjacentToNumbers(numbers))
+    .map(isAdjacentToNumbers(numbers))
+    .filter((neighbours) => neighbours.length === 2)
+    .flatMap((numbers) => numbers)
     .map(({ value }) => value)
     .reduce(multiply, 1);
 
@@ -34,6 +36,15 @@ describe("count gears ratio", () => {
     const game: Game = {
       numbers: [{ value: 3, x: 0, y: 0 }, { value: 2, x: 2, y: 0 }],
       specialCharacters: [{ value: "$", x: 1, y: 1 }],
+    };
+
+    expect(countGearsRatio(game)).toBe(1);
+  });
+
+  it("only counts gears that are adjacent to 2 numbers", () => {
+    const game: Game = {
+      numbers: [{ value: 3, x: 0, y: 0 }],
+      specialCharacters: [{ value: "*", x: 1, y: 1 }],
     };
 
     expect(countGearsRatio(game)).toBe(1);
