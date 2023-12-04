@@ -15,7 +15,7 @@ const readLineNumbers = (line: string, y: number, x = 0, acc = ""): any => {
   } else {
     result = readLineNumbers(rest.join(""), y, x + 1);
     if (acc !== "") {
-      result = [{ value: Number(acc), x: x - acc.length, y }, ...result];
+      result.unshift({ value: Number(acc), x: x - acc.length, y });
     }
   }
 
