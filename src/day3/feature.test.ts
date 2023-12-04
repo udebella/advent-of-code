@@ -1,11 +1,20 @@
 import { describe, expect, it } from "../deps.ts";
 
-const readLineNumbers = (line: string, y: number, x = 0, acc = ""): any => {
+const readLineNumbers = (
+  line: string,
+  y: number,
+  index = 0,
+  previousDigits = "",
+): any => {
   if (line === "") {
-    if (acc === "") {
+    if (previousDigits === "") {
       return [];
     } else {
-      return [{ value: Number(acc), x: x - acc.length, y }];
+      return [{
+        value: Number(previousDigits),
+        x: index - previousDigits.length,
+        y,
+      }];
     }
   }
   const [first, ...rest] = line.split("");
@@ -13,11 +22,15 @@ const readLineNumbers = (line: string, y: number, x = 0, acc = ""): any => {
   const result = readLineNumbers(
     rest.join(""),
     y,
-    x + 1,
-    isNumber ? acc + first : undefined,
+    index + 1,
+    isNumber ? previousDigits + first : undefined,
   );
-  if (acc !== "" && !isNumber) {
-    result.unshift({ value: Number(acc), x: x - acc.length, y });
+  if (previousDigits !== "" && !isNumber) {
+    result.unshift({
+      value: Number(previousDigits),
+      x: index - previousDigits.length,
+      y,
+    });
   }
 
   return result;
