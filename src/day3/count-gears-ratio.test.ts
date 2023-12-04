@@ -1,17 +1,6 @@
 import { describe, expect, it } from "../deps.ts";
 import { Game } from "./read-game.ts";
-import { isAdjacentToNumbers } from "./is-adjacent-to-numbers.ts";
-
-const multiply = (a: number, b: number) => a * b;
-
-const countGearsRatio = ({ numbers, specialCharacters }: Game) =>
-  specialCharacters
-    .filter(({ value }) => value === "*")
-    .map(isAdjacentToNumbers(numbers))
-    .filter((neighbours) => neighbours.length === 2)
-    .flatMap((numbers) => numbers)
-    .map(({ value }) => value)
-    .reduce(multiply, 1);
+import { countGearsRatio } from "./count-gears-ratio.ts";
 
 describe("count gears ratio", () => {
   it("does not keep any numbers when no specialCharacters", () => {
