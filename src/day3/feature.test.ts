@@ -12,7 +12,7 @@ const combineAdjacentNumbers = (
 });
 
 const isAdjacent = (first: ParsedElement, second: ParsedElement) =>
-  first && first.x + 1 === second.x;
+  first?.x + 1 === second.x;
 
 type ParsedElement = { value: string; x: number; y: number };
 const readLineNumbers = (line: string, y: number) =>
