@@ -2,7 +2,10 @@ import { describe, expect, it } from "../deps.ts";
 
 const isNumber = (string: string): boolean => !isNaN(Number(string));
 
-const combine = (first: LineNumber, next: LineNumber): LineNumber => ({
+const combineAdjacentNumbers = (
+  first: LineNumber,
+  next: LineNumber,
+): LineNumber => ({
   value: first.value + next.value,
   x: first.x,
   y: first.y,
@@ -17,7 +20,7 @@ const readLineNumbers = (line: string, y: number) =>
     .reduce((acc: LineNumber[], next: LineNumber) => {
       const [first, ...rest] = acc;
       if (first && next.x === first.x + 1) {
-        return [...rest, combine(first, next)];
+        return [...rest, combineAdjacentNumbers(first, next)];
       }
       return [...acc, next];
     }, [])
