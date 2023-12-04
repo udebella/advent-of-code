@@ -1,6 +1,10 @@
 import { isNumber } from "./is-number.ts";
 
-export const readLineSpecialCharacters = (line: string, y: number) =>
+export type SpecialCharacter = { value: string; x: number; y: number };
+export const readLineSpecialCharacters = (
+  line: string,
+  y: number,
+): SpecialCharacter[] =>
   [...line]
     .map((value, index) => ({ value, x: index, y }))
     .filter(({ value }) => value !== ".")
