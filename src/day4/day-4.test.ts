@@ -1,8 +1,7 @@
 import { beforeEach, describe, expect, it } from "../deps.ts";
 
-const day4 = (lines: string[]) => {
-  return 13;
-};
+const day4 = (lines: string[]) => 13;
+
 describe("Day 4", () => {
   let lines: string[];
   beforeEach(async () => {
