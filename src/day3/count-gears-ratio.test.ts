@@ -9,10 +9,6 @@ const countGearsRatio = ({ numbers, specialCharacters }: Game) => {
     .flatMap(isAdjacentToNumbers(numbers))
     .map(({ value }) => value)
     .reduce(multiply, specialCharacters.length ? 1 : 0);
-  if (specialCharacters.length) {
-    return numbers.map(({ value }) => value).reduce(multiply);
-  }
-  return 0;
 };
 
 describe("count gears ratio", () => {
