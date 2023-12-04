@@ -4,7 +4,8 @@ const readLine = (line: string) => {
   const [, numbers] = line.split(":");
   const [winningNumbers] = numbers.split("|");
   return {
-    winningNumbers: winningNumbers.split(" ").filter((string) => string !== "")
+    winningNumbers: winningNumbers.split(" ")
+      .filter((string) => string !== "")
       .map(Number),
   };
 };
