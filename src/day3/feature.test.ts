@@ -3,24 +3,24 @@ import { describe, expect, it } from "../deps.ts";
 const isNumber = (string: string): boolean => !isNaN(Number(string));
 
 const combineAdjacentNumbers = (
-  first: LineNumber,
-  next: LineNumber,
-): LineNumber => ({
+  first: ParsedElement,
+  next: ParsedElement,
+): ParsedElement => ({
   value: first.value + next.value,
   x: first.x,
   y: first.y,
 });
 
-const isAdjacent = (first: LineNumber, next: LineNumber) =>
+const isAdjacent = (first: ParsedElement, next: ParsedElement) =>
   first && next.x === first.x + 1;
 
-type LineNumber = { value: string; x: number; y: number };
+type ParsedElement = { value: string; x: number; y: number };
 const readLineNumbers = (line: string, y: number) =>
   [...line]
-    .map((value, index) => ({ value, x: index, y }))
+    .map((value, index): ParsedElement => ({ value, x: index, y }))
     .filter(({ value }) => value !== ".")
     .filter(({ value }) => isNumber(value))
-    .reduce((acc: LineNumber[], next: LineNumber) => {
+    .reduce((acc: ParsedElement[], next: ParsedElement) => {
       const [first, ...rest] = acc;
       if (isAdjacent(first, next)) {
         return [...rest, combineAdjacentNumbers(first, next)];
