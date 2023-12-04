@@ -6,11 +6,16 @@ import { Number } from "./read-line-numbers.ts";
 const sum = (a: number, b: number) => a + b;
 
 const isAdjacentToSpecialCharacter =
-  (specialCharacters: SpecialCharacter[]) => ({ x: numberX }: Number) =>
-    specialCharacters.find(({ x: specialCharacterX }) =>
+  (specialCharacters: SpecialCharacter[]) =>
+  (
+    { x: numberX, value }: Number,
+  ) => {
+    const numberSize = `${value}`.length;
+    return specialCharacters.find(({ x: specialCharacterX }) =>
       numberX - 1 === specialCharacterX ||
-      numberX + 1 === specialCharacterX
+      numberX + numberSize === specialCharacterX
     );
+  };
 
 const countValidNumbers = ({ numbers, specialCharacters }: Game) => {
   return numbers
@@ -54,5 +59,14 @@ describe("count valid numbers", () => {
     };
 
     expect(countValidNumbers(game)).toBe(3);
+  });
+
+  it("takes into account size of the number", () => {
+    const game: Game = {
+      numbers: [{ value: 34, x: 0, y: 0 }],
+      specialCharacters: [{ value: "$", x: 2, y: 0 }],
+    };
+
+    expect(countValidNumbers(game)).toBe(34);
   });
 });
