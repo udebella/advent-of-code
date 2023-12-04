@@ -1,9 +1,11 @@
 import { describe, expect, it } from "../deps.ts";
 import { Game } from "./read-game.ts";
 
+const sum = (a: number, b: number) => a + b;
+
 const countValidNumbers = (game: Game) => {
   return game.specialCharacters.length
-    ? game.numbers.map(({ value }) => value).reduce((a, b) => a + b)
+    ? game.numbers.map(({ value }) => value).reduce(sum)
     : 0;
 };
 
