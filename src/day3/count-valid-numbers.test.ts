@@ -5,12 +5,12 @@ const sum = (a: number, b: number) => a + b;
 
 const countValidNumbers = (game: Game) => {
   return game.specialCharacters.length
-    ? game.numbers.filter(({ x: numberX }) => {
-      return game.specialCharacters.find(({ x: specialCharacterX }) => {
-        return numberX - 1 === specialCharacterX ||
-          numberX + 1 === specialCharacterX;
-      });
-    }).map(({ value }) => value).reduce(sum, 0)
+    ? game.numbers.filter(({ x: numberX }) =>
+      game.specialCharacters.find(({ x: specialCharacterX }) =>
+        numberX - 1 === specialCharacterX ||
+        numberX + 1 === specialCharacterX
+      )
+    ).map(({ value }) => value).reduce(sum, 0)
     : 0;
 };
 
