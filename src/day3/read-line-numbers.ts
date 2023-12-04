@@ -1,8 +1,9 @@
 import { isNumber } from "./is-number.ts";
 
+type Number = { value: number; x: number; y: number };
 type ParsedElement = { value: string; x: number; y: number };
 
-export const readLineNumbers = (line: string, y: number) =>
+export const readLineNumbers = (line: string, y: number): Number[] =>
   [...line]
     .map((value, index): ParsedElement => ({ value, x: index, y }))
     .filter(({ value }) => value !== ".")
