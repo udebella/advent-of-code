@@ -4,15 +4,15 @@ const isNumber = (string: string): boolean => !isNaN(Number(string));
 
 const combineAdjacentNumbers = (
   first: ParsedElement,
-  next: ParsedElement,
+  second: ParsedElement,
 ): ParsedElement => ({
-  value: first.value + next.value,
+  value: first.value + second.value,
   x: first.x,
   y: first.y,
 });
 
-const isAdjacent = (first: ParsedElement, next: ParsedElement) =>
-  first && next.x === first.x + 1;
+const isAdjacent = (first: ParsedElement, second: ParsedElement) =>
+  first && first.x + 1 === second.x;
 
 type ParsedElement = { value: string; x: number; y: number };
 const readLineNumbers = (line: string, y: number) =>
