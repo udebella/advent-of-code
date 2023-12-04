@@ -10,7 +10,7 @@ const readLineNumbers = (line: string, y: number) =>
     .filter(({ value }) => isNumber(value))
     .reduce((acc: LineNumbers[], next: LineNumbers) => {
       const [first, ...rest] = acc;
-      if (next.x === first?.x + 1) {
+      if (first && next.x === first.x + 1) {
         const combined = {
           value: first.value + next.value,
           x: first.x,
