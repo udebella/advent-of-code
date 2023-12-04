@@ -1,7 +1,6 @@
 import { describe, expect, it } from "../deps.ts";
 
-const isNumber = (string: number | string): string is number =>
-  !isNaN(Number(string));
+const isNumber = (string: string): boolean => !isNaN(Number(string));
 
 type LineNumbers = { value: number; x: number; y: number };
 const readLineNumbers = (line: string, y: number, index = 0): LineNumbers[] => {
