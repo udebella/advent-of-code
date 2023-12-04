@@ -2,9 +2,8 @@ import { describe, expect, it } from "../../deps.ts";
 import { Game } from "../parse/read-line.ts";
 
 const computePoints = (game: Game) => {
-  return game.playedNumbers.filter((number) =>
-    game.winningNumbers.includes(number)
-  ).length;
+  return game.playedNumbers
+    .filter((number) => game.winningNumbers.includes(number)).length;
 };
 
 describe("Points", () => {
