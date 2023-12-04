@@ -5,7 +5,8 @@ const readNumbers = (numbers: string) =>
     .filter((string) => string !== "")
     .map(Number);
 
-const readLine = (line: string) => {
+type Game = { playedNumbers: number[]; winningNumbers: number[] };
+const readLine = (line: string): Game => {
   const [, numbers] = line.split(":");
   const [winningNumbers, playedNumbers] = numbers.split("|");
   return {
