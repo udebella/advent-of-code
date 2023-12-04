@@ -22,10 +22,9 @@ const readLineNumbers = (line: string, y: number) =>
     .filter(({ value }) => isNumber(value))
     .reduce((acc: ParsedElement[], next: ParsedElement) => {
       const [first, ...rest] = acc;
-      if (isAdjacent(first, next)) {
-        return [...rest, combineAdjacentNumbers(first, next)];
-      }
-      return [...acc, next];
+      return isAdjacent(first, next)
+        ? [...rest, combineAdjacentNumbers(first, next)]
+        : [...acc, next];
     }, [])
     .map(({ value, x, y }) => ({ value: Number(value), x, y }));
 
