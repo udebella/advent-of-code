@@ -1,4 +1,4 @@
-type Game = { playedNumbers: number[]; winningNumbers: number[] };
+export type Game = { playedNumbers: number[]; winningNumbers: number[] };
 export const readLine = (line: string): Game => {
   const [, numbers] = line.split(":");
   const [winningNumbers, playedNumbers] = numbers.split("|");
