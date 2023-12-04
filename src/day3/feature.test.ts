@@ -11,6 +11,9 @@ const combineAdjacentNumbers = (
   y: first.y,
 });
 
+const isAdjacent = (first: LineNumber, next: LineNumber) =>
+  first && next.x === first.x + 1;
+
 type LineNumber = { value: string; x: number; y: number };
 const readLineNumbers = (line: string, y: number) =>
   [...line]
@@ -19,7 +22,7 @@ const readLineNumbers = (line: string, y: number) =>
     .filter(({ value }) => isNumber(value))
     .reduce((acc: LineNumber[], next: LineNumber) => {
       const [first, ...rest] = acc;
-      if (first && next.x === first.x + 1) {
+      if (isAdjacent(first, next)) {
         return [...rest, combineAdjacentNumbers(first, next)];
       }
       return [...acc, next];
