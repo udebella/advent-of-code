@@ -1,19 +1,21 @@
 import { describe, expect, it } from "../deps.ts";
 
+const isNumber = (string: number | string): string is number =>
+  !isNaN(Number(string));
+
 type LineNumbers = { value: number; x: number; y: number };
 const readLineNumbers = (line: string, y: number, index = 0): LineNumbers[] => {
   if (line === "") {
     return [];
   }
   const [currentNumber] = line.split(/[^0-9]/);
-  const isNumber = currentNumber !== "" && !isNaN(Number(currentNumber));
   const currentNumberSize = currentNumber.length + 1;
   const otherNumbers = readLineNumbers(
     line.slice(currentNumberSize),
     y,
     index + currentNumberSize,
   );
-  return isNumber
+  return currentNumber !== "" && isNumber(currentNumber)
     ? [{ value: Number(currentNumber), x: index, y }, ...otherNumbers]
     : otherNumbers;
 };
