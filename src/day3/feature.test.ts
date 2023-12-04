@@ -11,10 +11,11 @@ const readLineNumbers = (
   }
   const [currentNumber] = line.split(/[^0-9]/);
   const isNumber = currentNumber !== "" && !isNaN(Number(currentNumber));
+  const currentNumberSize = currentNumber.length + 1;
   const otherNumbers = readLineNumbers(
-    line.slice(currentNumber.length + 1),
+    line.slice(currentNumberSize),
     y,
-    index + currentNumber.length + 1,
+    index + currentNumberSize,
   );
   return isNumber
     ? [{ value: Number(currentNumber), x: index, y }, ...otherNumbers]
