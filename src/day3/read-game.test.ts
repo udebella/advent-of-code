@@ -9,4 +9,11 @@ describe("readGame", () => {
       specialCharacters: [],
     });
   });
+
+  it("reads a simple line", () => {
+    expect(readGame(["3"])).toEqual({
+      numbers: [{ value: 3, x: 0, y: 0 }],
+      specialCharacters: [],
+    });
+  });
 });
