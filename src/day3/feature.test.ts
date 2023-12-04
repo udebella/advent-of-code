@@ -35,7 +35,20 @@ const readLineSpecialCharacters = (line: string, y: number) =>
     .filter(({ value }) => value !== ".")
     .filter(({ value }) => !isNumber(value));
 
+const readGame = (strings: string[]) => ({
+  numbers: [],
+  specialCharacters: [],
+});
 describe("Day 3", () => {
+  describe("readGame", () => {
+    it("reads default empty line", () => {
+      expect(readGame(["."])).toEqual({
+        numbers: [],
+        specialCharacters: [],
+      });
+    });
+  });
+
   describe("readLineNumbers", () => {
     it("can read one 3 digit in one line", () => {
       expect(readLineNumbers("3", 0)).toEqual([{ value: 3, x: 0, y: 0 }]);
