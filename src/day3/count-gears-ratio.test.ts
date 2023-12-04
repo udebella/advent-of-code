@@ -6,9 +6,10 @@ const multiply = (a: number, b: number) => a * b;
 
 const countGearsRatio = ({ numbers, specialCharacters }: Game) =>
   specialCharacters
+    .filter(({ value }) => value === "*")
     .flatMap(isAdjacentToNumbers(numbers))
     .map(({ value }) => value)
-    .reduce(multiply, specialCharacters.length ? 1 : 0);
+    .reduce(multiply, 1);
 
 describe("count gears ratio", () => {
   it("does not keep any numbers when no specialCharacters", () => {
@@ -17,7 +18,7 @@ describe("count gears ratio", () => {
       specialCharacters: [],
     };
 
-    expect(countGearsRatio(game)).toBe(0);
+    expect(countGearsRatio(game)).toBe(1);
   });
 
   it("count gear ratio when 2 adjacent numbers", () => {
@@ -27,5 +28,14 @@ describe("count gears ratio", () => {
     };
 
     expect(countGearsRatio(game)).toBe(6);
+  });
+
+  it("ignores special characters that are not gears", () => {
+    const game: Game = {
+      numbers: [{ value: 3, x: 0, y: 0 }, { value: 2, x: 2, y: 0 }],
+      specialCharacters: [{ value: "$", x: 1, y: 1 }],
+    };
+
+    expect(countGearsRatio(game)).toBe(1);
   });
 });
