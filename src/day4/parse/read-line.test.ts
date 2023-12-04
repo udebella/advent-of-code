@@ -2,7 +2,7 @@ import { describe, expect, it } from "../../deps.ts";
 
 const readLine = (line: string) => {
   return {
-    winningNumbers: [1],
+    winningNumbers: [Number(line[8])],
   };
 };
 
@@ -11,5 +11,11 @@ describe("Read line", () => {
     const line = readLine("Card 1: 1 | 2");
 
     expect(line.winningNumbers).toEqual([1]);
+  });
+
+  it("can read different winning numbers from line", () => {
+    const line = readLine("Card 1: 3 | 2");
+
+    expect(line.winningNumbers).toEqual([3]);
   });
 });
