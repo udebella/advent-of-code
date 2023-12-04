@@ -1,29 +1,6 @@
 import { describe, expect, it } from "../deps.ts";
 import { Game } from "./read-game.ts";
-import { SpecialCharacter } from "./read-line-special-characters.ts";
-import { Number } from "./read-line-numbers.ts";
-
-const sum = (a: number, b: number) => a + b;
-
-const isAdjacentToSpecialCharacter =
-  (specialCharacters: SpecialCharacter[]) => (number: Number) => {
-    const { x: numberX, y: numberY, value } = number;
-    const numberSize = `${value}`.length;
-    return specialCharacters
-      .find(({ x: specialCharacterX, y: specialCharacterY }) =>
-        numberX - 1 <= specialCharacterX &&
-        numberX + numberSize >= specialCharacterX &&
-        numberY + 1 >= specialCharacterY &&
-        numberY - 1 <= specialCharacterY
-      );
-  };
-
-const countValidNumbers = ({ numbers, specialCharacters }: Game) => {
-  return numbers
-    .filter(isAdjacentToSpecialCharacter(specialCharacters))
-    .map(({ value }) => value)
-    .reduce(sum, 0);
-};
+import { countValidNumbers } from "./count-valid-numbers.ts";
 
 describe("count valid numbers", () => {
   it("does not keep any numbers when no specialCharacters", () => {
