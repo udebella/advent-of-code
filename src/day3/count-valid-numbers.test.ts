@@ -13,9 +13,10 @@ const isAdjacentToSpecialCharacter =
     );
 
 const countValidNumbers = ({ numbers, specialCharacters }: Game) => {
-  return numbers.filter(isAdjacentToSpecialCharacter(specialCharacters)).map((
-    { value },
-  ) => value).reduce(sum, 0);
+  return numbers
+    .filter(isAdjacentToSpecialCharacter(specialCharacters))
+    .map(({ value }) => value)
+    .reduce(sum, 0);
 };
 
 describe("count valid numbers", () => {
