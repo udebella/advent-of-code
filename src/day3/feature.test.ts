@@ -18,10 +18,10 @@ const readLineNumbers = (
       }];
     }
   }
-  const [first, ...rest] = line.split("");
+  const first = line[0];
   const isNumber = !isNaN(Number(first));
   const result = readLineNumbers(
-    rest.join(""),
+    line.slice(1),
     y,
     index + 1,
     isNumber ? previousDigits + first : undefined,
