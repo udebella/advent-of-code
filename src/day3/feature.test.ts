@@ -18,10 +18,7 @@ const readLineNumbers = (line: string, y: number, index = 0): LineNumbers[] => {
     : otherNumbers;
 };
 
-const readLineSpecialCharacters = (
-  line: string,
-  y: number,
-) =>
+const readLineSpecialCharacters = (line: string, y: number) =>
   [...line]
     .map((value, index) =>
       value !== "." && isNaN(Number(value)) ? { value, x: index, y } : undefined
