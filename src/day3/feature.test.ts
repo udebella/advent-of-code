@@ -1,11 +1,7 @@
 import { describe, expect, it } from "../deps.ts";
 
 type LineNumbers = { value: number; x: number; y: number };
-const readLineNumbers = (
-  line: string,
-  y: number,
-  index = 0,
-): LineNumbers[] => {
+const readLineNumbers = (line: string, y: number, index = 0): LineNumbers[] => {
   if (line === "") {
     return [];
   }
