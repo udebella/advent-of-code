@@ -8,15 +8,16 @@ const readLineNumbers = (line: string, y: number, x = 0, acc = ""): any => {
       return [{ value: Number(acc), x: x - acc.length, y }];
     }
   }
-  let result;
   const [first, ...rest] = line.split("");
-  if (!isNaN(Number(first))) {
-    result = readLineNumbers(rest.join(""), y, x + 1, acc + first);
-  } else {
-    result = readLineNumbers(rest.join(""), y, x + 1);
-    if (acc !== "") {
-      result.unshift({ value: Number(acc), x: x - acc.length, y });
-    }
+  const isNumber = !isNaN(Number(first));
+  const result = readLineNumbers(
+    rest.join(""),
+    y,
+    x + 1,
+    isNumber ? acc + first : undefined,
+  );
+  if (acc !== "" && !isNumber) {
+    result.unshift({ value: Number(acc), x: x - acc.length, y });
   }
 
   return result;
