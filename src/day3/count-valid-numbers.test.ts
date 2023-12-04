@@ -9,13 +9,14 @@ const isAdjacentToSpecialCharacter =
   (specialCharacters: SpecialCharacter[]) => (number: Number) => {
     const { x: numberX, y: numberY, value } = number;
     const numberSize = `${value}`.length;
-    return specialCharacters.find((
-      { x: specialCharacterX, y: specialCharacterY },
-    ) =>
-      numberX - 1 <= specialCharacterX &&
-      numberX + numberSize >= specialCharacterX &&
-      numberY + 1 >= specialCharacterY
-    );
+    return specialCharacters
+      .find((
+        { x: specialCharacterX, y: specialCharacterY },
+      ) =>
+        numberX - 1 <= specialCharacterX &&
+        numberX + numberSize >= specialCharacterX &&
+        numberY + 1 >= specialCharacterY
+      );
   };
 
 const countValidNumbers = ({ numbers, specialCharacters }: Game) => {
