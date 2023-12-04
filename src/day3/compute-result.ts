@@ -1,6 +1,6 @@
-import {countValidNumbers} from "./count-valid-numbers.ts";
-import {readGame} from "./read-game.ts";
-import {countGearsRatio} from "./count-gears-ratio.ts";
+import { countValidNumbers } from "./count-valid-numbers.ts";
+import { readGame } from "./read-game.ts";
+import { countGearsRatio } from "./count-gears-ratio.ts";
 
 const lines = (await Deno.readTextFile("./input.txt")).split("\n");
 const resultRound1 = countValidNumbers(readGame(lines));
