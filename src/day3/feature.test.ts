@@ -5,36 +5,30 @@ const readLineNumbers = (
   line: string,
   y: number,
   index = 0,
-  previousDigits = "",
 ): LineNumbers[] => {
   if (line === "") {
-    if (previousDigits === "") {
-      return [];
-    } else {
-      return [{
-        value: Number(previousDigits),
-        x: index - previousDigits.length,
+    return [];
+  }
+  const [first] = line.split(/[^0-9]/);
+  const isNumber = first !== "" && !isNaN(Number(first));
+  return isNumber
+    ? [
+      {
+        value: Number(first),
+        x: index,
         y,
-      }];
-    }
-  }
-  const first = line[0];
-  const isNumber = !isNaN(Number(first));
-  const result = readLineNumbers(
-    line.slice(1),
-    y,
-    index + 1,
-    isNumber ? previousDigits + first : undefined,
-  );
-  if (previousDigits !== "" && !isNumber) {
-    result.unshift({
-      value: Number(previousDigits),
-      x: index - previousDigits.length,
+      },
+      ...readLineNumbers(
+        line.slice(first.length + 1),
+        y,
+        index + first.length + 1,
+      ),
+    ]
+    : readLineNumbers(
+      line.slice(first.length + 1),
       y,
-    });
-  }
-
-  return result;
+      index + first.length + 1,
+    );
 };
 
 const readLineSpecialCharacters = (
