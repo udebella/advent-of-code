@@ -1,21 +1,24 @@
 import { describe, expect, it } from "../deps.ts";
 
-const readLineNumbers = (line: string, y: number) => {
-  let result = [];
-  let i = 0;
-  while (i < line.length) {
-    let number = line[i];
-    if (!isNaN(Number(number))) {
-      let j = i + 1;
-      while (j < line.length && !isNaN(Number(line[j]))) {
-        number += line[j++];
-      }
-      result.push({ value: Number(number), x: i, y });
-      i = j;
+const readLineNumbers = (line: string, y: number, x = 0, acc = ""): any => {
+  if (line === "") {
+    if (acc === "") {
+      return [];
     } else {
-      i++;
+      return [{ value: Number(acc), x: x - acc.length, y }];
     }
   }
+  let result;
+  const [first, ...rest] = line.split("");
+  if (!isNaN(Number(first))) {
+    result = readLineNumbers(rest.join(""), y, x + 1, acc + first);
+  } else {
+    result = readLineNumbers(rest.join(""), y, x + 1);
+    if (acc !== "") {
+      result = [{ value: Number(acc), x: x - acc.length, y }, ...result];
+    }
+  }
+
   return result;
 };
 
