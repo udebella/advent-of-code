@@ -10,9 +10,7 @@ const readLine = (line: string) => {
   const [winningNumbers, playedNumbers] = numbers.split("|");
   return {
     playedNumbers: readNumbers(playedNumbers),
-    winningNumbers: winningNumbers.split(" ")
-      .filter((string) => string !== "")
-      .map(Number),
+    winningNumbers: readNumbers(winningNumbers),
   };
 };
 
