@@ -1,7 +1,12 @@
 import { describe, expect, it } from "../deps.ts";
 import { Game } from "./read-game.ts";
+import { isAdjacentToNumbers } from "./is-adjacent-to-numbers.ts";
 
 const countGearsRatio = (game: Game) => {
+  game.specialCharacters
+    .flatMap(isAdjacentToNumbers(game.numbers))
+    .map(({ value }) => value)
+    .reduce((a, b) => a * b, 1);
   if (game.specialCharacters.length) {
     return game.numbers.map(({ value }) => value).reduce((a, b) => a * b);
   }
