@@ -1,19 +1,5 @@
 import { describe, expect, it } from "../../deps.ts";
-
-const readNumbers = (numbers: string) =>
-  numbers.split(" ")
-    .filter((string) => string !== "")
-    .map(Number);
-
-type Game = { playedNumbers: number[]; winningNumbers: number[] };
-const readLine = (line: string): Game => {
-  const [, numbers] = line.split(":");
-  const [winningNumbers, playedNumbers] = numbers.split("|");
-  return {
-    playedNumbers: readNumbers(playedNumbers),
-    winningNumbers: readNumbers(winningNumbers),
-  };
-};
+import { readLine } from "./read-line.ts";
 
 describe("Read line", () => {
   describe("winning numbers", () => {
