@@ -10,10 +10,17 @@ describe("readGame", () => {
     });
   });
 
-  it("reads a simple line", () => {
+  it("reads a simple digit line", () => {
     expect(readGame(["3"])).toEqual({
       numbers: [{ value: 3, x: 0, y: 0 }],
       specialCharacters: [],
+    });
+  });
+
+  it("reads a simple special character line", () => {
+    expect(readGame(["$"])).toEqual({
+      numbers: [],
+      specialCharacters: [{ value: "$", x: 0, y: 0 }],
     });
   });
 });
