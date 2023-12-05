@@ -11,10 +11,8 @@ const day4FirstIteration = (lines: string[]) =>
     .map(computePoints)
     .reduce(sum);
 
-const day4SecondIteration = (lines: string[]) => {
+const day4SecondIteration = (lines: string[]) =>
   wonCards(lines.map(readLine).map(computeWinningNumbers));
-  return 30;
-};
 
 describe("Day 4", () => {
   let simplifiedLines: string[];
