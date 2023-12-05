@@ -4,9 +4,7 @@ import { Game } from "../parse/read-line.ts";
 const computePoints = (game: Game) => {
   const keptNumber = game.playedNumbers
     .filter((number) => game.winningNumbers.includes(number));
-  return keptNumber.length
-    ? keptNumber.map(() => 1).reduce((result) => result * 2)
-    : 0;
+  return keptNumber.length ? Math.pow(2, keptNumber.length - 1) : 0;
 };
 
 describe("Points", () => {
