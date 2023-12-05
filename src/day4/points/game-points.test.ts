@@ -2,9 +2,9 @@ import { describe, expect, it } from "../../deps.ts";
 import { Game } from "../parse/read-line.ts";
 
 const computePoints = (game: Game) => {
-  const keptNumber = game.playedNumbers
-    .filter((number) => game.winningNumbers.includes(number));
-  return keptNumber.length ? Math.pow(2, keptNumber.length - 1) : 0;
+  const numberOfValidNumbers = game.playedNumbers
+    .filter((number) => game.winningNumbers.includes(number)).length;
+  return numberOfValidNumbers ? Math.pow(2, numberOfValidNumbers - 1) : 0;
 };
 
 describe("Points", () => {
