@@ -5,9 +5,9 @@ const wonCards = (game: { number: number; winningNumbers: number }[]) => {
 };
 
 describe("Won cards", () => {
-  it("can compute won cards", () => {
+  it("have only one card when one card does not have winning numbers", () => {
     const game = [
-      { number: 1, winningNumbers: 1 },
+      { number: 1, winningNumbers: 0 },
     ];
 
     expect(wonCards(game)).toEqual(1);
