@@ -13,8 +13,7 @@ const wonCards = (
   const nextBonuses = otherBonuses.map((bonus) =>
     firstCard.winningNumbers-- ? bonus + 1 : bonus
   );
-  return firstBonus + firstCard.number +
-    wonCards(rest, nextBonuses);
+  return firstBonus + 1 + wonCards(rest, nextBonuses);
 };
 
 describe("Won cards", () => {
