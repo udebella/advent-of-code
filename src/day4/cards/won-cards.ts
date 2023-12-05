@@ -1,7 +1,7 @@
 type Card = { winningNumbers: number };
 export const wonCards = (
   cards: Card[],
-  bonuses: number[] = new Array(20).fill(0),
+  bonuses: number[] = new Array(cards.length).fill(0),
 ): number => {
   if (cards.length === 0) {
     return 0;
