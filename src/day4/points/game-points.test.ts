@@ -1,11 +1,6 @@
 import { describe, expect, it } from "../../deps.ts";
 import { Game } from "../parse/read-line.ts";
-
-const computePoints = (game: Game) => {
-  const numberOfValidNumbers = game.playedNumbers
-    .filter((number) => game.winningNumbers.includes(number)).length;
-  return numberOfValidNumbers ? Math.pow(2, numberOfValidNumbers - 1) : 0;
-};
+import { computePoints } from "./compute-points.ts";
 
 describe("Points", () => {
   it("does not have any points when played numbers are not in winning list", () => {
