@@ -1,6 +1,13 @@
 import { beforeEach, describe, expect, it } from "../deps.ts";
+import { readLine } from "./parse/read-line.ts";
+import { computePoints } from "./points/compute-points.ts";
+import { sum } from "../day3/sum.ts";
 
-const day4 = (lines: string[]) => 13;
+const day4 = (lines: string[]) =>
+  lines
+    .map(readLine)
+    .map(computePoints)
+    .reduce(sum);
 
 describe("Day 4", () => {
   let lines: string[];
