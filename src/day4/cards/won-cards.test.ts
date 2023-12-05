@@ -46,4 +46,14 @@ describe("Won cards", () => {
 
     expect(wonCards(cards)).toEqual(1 + 2 + 4);
   });
+
+  it("only count actual bonuses", () => {
+    const cards = [
+      { winningNumbers: 0 },
+      { winningNumbers: 0 },
+      { winningNumbers: 0 },
+    ];
+
+    expect(wonCards(cards)).toEqual(1 + 1 + 1);
+  });
 });
