@@ -1,7 +1,8 @@
 import { describe, expect, it } from "../../deps.ts";
 import { sum } from "../../day3/sum.ts";
 
-const wonCards = (cards: { number: number; winningNumbers: number }[]) => {
+type Card = { number: number; winningNumbers: number };
+const wonCards = (cards: Card[]) => {
   return cards.map(({ number }) => number).reduce(sum);
 };
 
