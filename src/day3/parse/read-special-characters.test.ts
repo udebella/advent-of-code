@@ -1,4 +1,4 @@
-import { describe, expect, it } from "../deps.ts";
+import { describe, expect, it } from "../../deps.ts";
 import { readLineSpecialCharacters } from "./read-line-special-characters.ts";
 
 describe("readLineSpecialCharacters", () => {

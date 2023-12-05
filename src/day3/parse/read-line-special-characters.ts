@@ -1,4 +1,4 @@
-import { isNumber } from "./is-number.ts";
+import { isNumber } from "../rules/is-number.ts";
 
 export type SpecialCharacter = { value: string; x: number; y: number };
 export const readLineSpecialCharacters = (

@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it } from "../deps.ts";
-import { countValidNumbers } from "./count-valid-numbers.ts";
-import { readGame } from "./read-game.ts";
-import { countGearsRatio } from "./count-gears-ratio.ts";
+import { countValidNumbers } from "./rules/count-valid-numbers.ts";
+import { readGame } from "./parse/read-game.ts";
+import { countGearsRatio } from "./rules/count-gears-ratio.ts";
 
 const firstIteration = (lines: string[]) => countValidNumbers(readGame(lines));
 

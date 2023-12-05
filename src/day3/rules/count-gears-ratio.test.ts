@@ -1,5 +1,5 @@
-import { describe, expect, it } from "../deps.ts";
-import { Game } from "./read-game.ts";
+import { describe, expect, it } from "../../deps.ts";
+import { Game } from "../parse/read-game.ts";
 import { countGearsRatio } from "./count-gears-ratio.ts";
 
 describe("count gears ratio", () => {

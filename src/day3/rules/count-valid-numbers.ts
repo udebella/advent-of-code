@@ -1,6 +1,6 @@
-import { Game } from "./read-game.ts";
+import { Game } from "../parse/read-game.ts";
 import { isAdjacentToNumbers } from "./is-adjacent-to-numbers.ts";
-import { sum } from "../sum.ts";
+import { sum } from "../../sum.ts";
 
 export const countValidNumbers = ({ numbers, specialCharacters }: Game) => {
   return specialCharacters

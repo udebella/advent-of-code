@@ -1,4 +1,4 @@
-import { isNumber } from "./is-number.ts";
+import { isNumber } from "../rules/is-number.ts";
 
 export type Number = { value: number; x: number; y: number };
 type ParsedElement = { value: string; x: number; y: number };

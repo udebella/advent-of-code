@@ -1,5 +1,5 @@
-import { describe, expect, it } from "../deps.ts";
-import { Game } from "./read-game.ts";
+import { describe, expect, it } from "../../deps.ts";
+import { Game } from "../parse/read-game.ts";
 import { countValidNumbers } from "./count-valid-numbers.ts";
 
 describe("count valid numbers", () => {

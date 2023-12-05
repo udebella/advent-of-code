@@ -1,5 +1,5 @@
-import { Number } from "./read-line-numbers.ts";
-import { SpecialCharacter } from "./read-line-special-characters.ts";
+import { Number } from "../parse/read-line-numbers.ts";
+import { SpecialCharacter } from "../parse/read-line-special-characters.ts";
 
 export const isAdjacentToNumbers =
   (numbers: Number[]) => (specialCharacter: SpecialCharacter) => {
