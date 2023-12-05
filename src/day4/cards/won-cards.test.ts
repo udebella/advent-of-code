@@ -6,7 +6,8 @@ const wonCards = (cards: Card[], bonuses = 0): number => {
     return 0;
   }
   const [firstCard, ...rest] = cards;
-  return (bonuses !== 0 ? 1 : 0) + firstCard.number +
+  const hasBonuses = bonuses !== 0;
+  return (hasBonuses ? 1 : 0) + firstCard.number +
     wonCards(rest, firstCard.winningNumbers);
 };
 
