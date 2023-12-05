@@ -8,10 +8,7 @@ const computeNextCardBonuses = (
   nextCardsBonuses
     .map((bonus) => numberOfWinningCards-- ? bonus + bonusCards + 1 : bonus);
 
-export const wonCards = (
-  cards: Card[],
-  bonuses?: number[],
-): number => {
+export const wonCards = (cards: Card[], bonuses?: number[]): number => {
   if (cards.length === 0) {
     return 0;
   }
