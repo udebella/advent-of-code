@@ -10,6 +10,7 @@ const day4FirstIteration = (lines: string[]) =>
     .reduce(sum);
 
 const day4SecondIteration = (lines: string[]) => {
+  lines.map(readLine);
   return 30;
 };
 
