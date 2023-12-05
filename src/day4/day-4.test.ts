@@ -5,13 +5,13 @@ import { sum } from "../sum.ts";
 import { computeWinningNumbers } from "./points/compute-winning-numbers.ts";
 import { wonCards } from "./cards/won-cards.ts";
 
-const day4FirstIteration = (lines: string[]) =>
+const firstIteration = (lines: string[]) =>
   lines
     .map(readLine)
     .map(computePoints)
     .reduce(sum);
 
-const day4SecondIteration = (lines: string[]) =>
+const secondIteration = (lines: string[]) =>
   wonCards(lines.map(readLine).map(computeWinningNumbers));
 
 describe("Day 4", () => {
@@ -26,21 +26,21 @@ describe("Day 4", () => {
 
   describe("First iteration", () => {
     it("compute simplified input", () => {
-      expect(day4FirstIteration(simplifiedLines)).toBe(13);
+      expect(firstIteration(simplifiedLines)).toBe(13);
     });
 
     it("compute input", () => {
-      expect(day4FirstIteration(lines)).toBe(27454);
+      expect(firstIteration(lines)).toBe(27454);
     });
   });
 
   describe("Second iteration", () => {
     it("compute simplified input", () => {
-      expect(day4SecondIteration(simplifiedLines)).toBe(30);
+      expect(secondIteration(simplifiedLines)).toBe(30);
     });
 
     it("compute input", () => {
-      expect(day4SecondIteration(lines)).toBe(6857330);
+      expect(secondIteration(lines)).toBe(6857330);
     });
   });
 });
