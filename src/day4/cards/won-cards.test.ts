@@ -19,7 +19,7 @@ const wonCards = (
 describe("Won cards", () => {
   it("have only one card when one card does not have winning numbers", () => {
     const cards = [
-      { number: 1, winningNumbers: 0 },
+      { winningNumbers: 0 },
     ];
 
     expect(wonCards(cards)).toEqual(1);
@@ -27,8 +27,8 @@ describe("Won cards", () => {
 
   it("have two cards when none have winning numbers", () => {
     const cards = [
-      { number: 1, winningNumbers: 0 },
-      { number: 1, winningNumbers: 0 },
+      { winningNumbers: 0 },
+      { winningNumbers: 0 },
     ];
 
     expect(wonCards(cards)).toEqual(2);
@@ -36,8 +36,8 @@ describe("Won cards", () => {
 
   it("have three cards when the first card have one winning numbers", () => {
     const cards = [
-      { number: 1, winningNumbers: 1 },
-      { number: 1, winningNumbers: 0 },
+      { winningNumbers: 1 },
+      { winningNumbers: 0 },
     ];
 
     expect(wonCards(cards)).toEqual(3);
@@ -45,8 +45,8 @@ describe("Won cards", () => {
 
   it("does not overflow winning cards", () => {
     const cards = [
-      { number: 1, winningNumbers: 2 },
-      { number: 1, winningNumbers: 0 },
+      { winningNumbers: 2 },
+      { winningNumbers: 0 },
     ];
 
     expect(wonCards(cards)).toEqual(3);
@@ -54,9 +54,9 @@ describe("Won cards", () => {
 
   it("count bonuses from the copy of the second card", () => {
     const cards = [
-      { number: 1, winningNumbers: 2 },
-      { number: 1, winningNumbers: 0 },
-      { number: 1, winningNumbers: 0 },
+      { winningNumbers: 2 },
+      { winningNumbers: 0 },
+      { winningNumbers: 0 },
     ];
 
     expect(wonCards(cards)).toEqual(5);
