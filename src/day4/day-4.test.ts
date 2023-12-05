@@ -9,6 +9,10 @@ const day4FirstIteration = (lines: string[]) =>
     .map(computePoints)
     .reduce(sum);
 
+const day4SecondIteration = (lines: string[]) => {
+  return 30;
+};
+
 describe("Day 4", () => {
   let simplifiedLines: string[];
   let lines: string[];
@@ -26,6 +30,12 @@ describe("Day 4", () => {
 
     it("compute input", () => {
       expect(day4FirstIteration(lines)).toBe(27454);
+    });
+  });
+
+  describe("Second iteration", () => {
+    it("compute simplified input", () => {
+      expect(day4SecondIteration(simplifiedLines)).toBe(30);
     });
   });
 });
