@@ -38,5 +38,9 @@ describe("Day 4", () => {
     it("compute simplified input", () => {
       expect(day4SecondIteration(simplifiedLines)).toBe(30);
     });
+
+    it("compute input", () => {
+      expect(day4SecondIteration(lines)).toBe(6857330);
+    });
   });
 });
