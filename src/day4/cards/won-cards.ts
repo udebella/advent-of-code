@@ -9,6 +9,8 @@ export const wonCards = (
   const [firstCard, ...rest] = cards;
   const [firstBonus, ...otherBonuses] = bonuses;
   const nextBonuses = otherBonuses
-    .map((bonus) => firstCard.winningNumbers-- ? bonus + 1 : bonus);
+    .map((bonus) =>
+      firstCard.winningNumbers-- ? bonus + firstBonus + 1 : bonus
+    );
   return firstBonus + 1 + wonCards(rest, nextBonuses);
 };

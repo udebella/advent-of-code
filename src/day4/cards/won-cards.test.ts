@@ -44,6 +44,6 @@ describe("Won cards", () => {
       { winningNumbers: 0 },
     ];
 
-    expect(wonCards(cards)).toEqual(1 + 2 + 3);
+    expect(wonCards(cards)).toEqual(1 + 2 + 4);
   });
 });
