@@ -1,6 +1,6 @@
 import { describe, expect, it } from "../../deps.ts";
 
-type Card = { number: number; winningNumbers: number };
+type Card = { winningNumbers: number };
 const wonCards = (
   cards: Card[],
   bonuses: number[] = new Array(20).fill(0),
