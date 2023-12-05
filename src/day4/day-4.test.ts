@@ -3,7 +3,7 @@ import { readLine } from "./parse/read-line.ts";
 import { computePoints } from "./points/compute-points.ts";
 import { sum } from "../day3/sum.ts";
 
-const day4 = (lines: string[]) =>
+const day4FirstIteration = (lines: string[]) =>
   lines
     .map(readLine)
     .map(computePoints)
@@ -19,11 +19,13 @@ describe("Day 4", () => {
     lines = (await Deno.readTextFile("./input.txt")).split("\n");
   });
 
-  it("compute simplified input", () => {
-    expect(day4(simplifiedLines)).toBe(13);
-  });
+  describe("First iteration", () => {
+    it("compute simplified input", () => {
+      expect(day4FirstIteration(simplifiedLines)).toBe(13);
+    });
 
-  it("compute input", () => {
-    expect(day4(lines)).toBe(27454);
+    it("compute input", () => {
+      expect(day4FirstIteration(lines)).toBe(27454);
+    });
   });
 });
