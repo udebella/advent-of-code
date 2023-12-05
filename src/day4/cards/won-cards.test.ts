@@ -1,14 +1,20 @@
 import { describe, expect, it } from "../../deps.ts";
 
 type Card = { number: number; winningNumbers: number };
-const wonCards = (cards: Card[], bonuses = 0): number => {
+const wonCards = (
+  cards: Card[],
+  bonuses: number[] = new Array(20).fill(0),
+): number => {
   if (cards.length === 0) {
     return 0;
   }
   const [firstCard, ...rest] = cards;
-  const hasBonuses = bonuses !== 0;
-  return (hasBonuses ? 1 : 0) + firstCard.number +
-    wonCards(rest, firstCard.winningNumbers);
+  const [firstBonus, ...otherBonuses] = bonuses;
+  const nextBonuses = otherBonuses.map((bonus) =>
+    firstCard.winningNumbers-- ? bonus + 1 : bonus
+  );
+  return firstBonus + firstCard.number +
+    wonCards(rest, nextBonuses);
 };
 
 describe("Won cards", () => {
@@ -45,5 +51,15 @@ describe("Won cards", () => {
     ];
 
     expect(wonCards(cards)).toEqual(3);
+  });
+
+  it("count bonuses from the copy of the second card", () => {
+    const cards = [
+      { number: 1, winningNumbers: 2 },
+      { number: 1, winningNumbers: 0 },
+      { number: 1, winningNumbers: 0 },
+    ];
+
+    expect(wonCards(cards)).toEqual(5);
   });
 });
