@@ -1,9 +1,5 @@
 import { Game } from "../parse/read-line.ts";
-
-const computeWinningNumbers = (game: Game) => ({
-  winningNumbers: game.playedNumbers
-    .filter((number) => game.winningNumbers.includes(number)).length,
-});
+import { computeWinningNumbers } from "./compute-winning-numbers.ts";
 
 export const computePoints = (game: Game) => {
   const { winningNumbers } = computeWinningNumbers(game);
