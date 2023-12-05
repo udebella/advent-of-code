@@ -1,13 +1,12 @@
 type Card = { winningNumbers: number };
 
-function computeNextCardBonuses(
+const computeNextCardBonuses = (
   nextCardsBonuses: number[],
   numberOfWinningCards: number,
   bonusCards: number,
-) {
-  return nextCardsBonuses
+) =>
+  nextCardsBonuses
     .map((bonus) => numberOfWinningCards-- ? bonus + bonusCards + 1 : bonus);
-}
 
 export const wonCards = (
   cards: Card[],
