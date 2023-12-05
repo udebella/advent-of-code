@@ -10,12 +10,20 @@ const day4 = (lines: string[]) =>
     .reduce(sum);
 
 describe("Day 4", () => {
+  let simplifiedLines: string[];
   let lines: string[];
   beforeEach(async () => {
-    lines = (await Deno.readTextFile("./input-simplified.txt")).split("\n");
+    simplifiedLines = (await Deno.readTextFile("./input-simplified.txt")).split(
+      "\n",
+    );
+    lines = (await Deno.readTextFile("./input.txt")).split("\n");
   });
 
   it("compute simplified input", () => {
-    expect(day4(lines)).toBe(13);
+    expect(day4(simplifiedLines)).toBe(13);
+  });
+
+  it("compute input", () => {
+    expect(day4(lines)).toBe(27454);
   });
 });
