@@ -1,10 +1,13 @@
 import { describe, expect, it } from "../../deps.ts";
-import { sum } from "../../day3/sum.ts";
 
 type Card = { number: number; winningNumbers: number };
-const wonCards = (cards: Card[]) => {
-  return cards.map(({ number, winningNumbers }) => number + winningNumbers)
-    .reduce(sum);
+const wonCards = (cards: Card[], bonuses = 0): number => {
+  if (cards.length === 0) {
+    return 0;
+  }
+  const [firstCard, ...rest] = cards;
+  return (bonuses !== 0 ? 1 : 0) + firstCard.number +
+    wonCards(rest, firstCard.winningNumbers);
 };
 
 describe("Won cards", () => {
@@ -28,6 +31,15 @@ describe("Won cards", () => {
   it("have three cards when the first card have one winning numbers", () => {
     const cards = [
       { number: 1, winningNumbers: 1 },
+      { number: 1, winningNumbers: 0 },
+    ];
+
+    expect(wonCards(cards)).toEqual(3);
+  });
+
+  it("does not overflow winning cards", () => {
+    const cards = [
+      { number: 1, winningNumbers: 2 },
       { number: 1, winningNumbers: 0 },
     ];
 
