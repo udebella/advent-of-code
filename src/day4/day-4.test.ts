@@ -5,7 +5,7 @@ const day4 = (lines: string[]) => 13;
 describe("Day 4", () => {
   let lines: string[];
   beforeEach(async () => {
-    lines = (await Deno.readTextFile("./input.txt")).split("\n");
+    lines = (await Deno.readTextFile("./input-simplified.txt")).split("\n");
   });
 
   it("compute simplified input", () => {
