@@ -10,13 +10,14 @@ const computeNextCardBonuses = (
 
 export const wonCards = (
   cards: Card[],
-  bonuses: number[] = new Array(cards.length).fill(0),
+  bonuses?: number[],
 ): number => {
   if (cards.length === 0) {
     return 0;
   }
   const [{ winningNumbers }, ...rest] = cards;
-  const [bonusCards, ...currentNextCardBonuses] = bonuses;
+  const [bonusCards, ...currentNextCardBonuses] = bonuses ??
+    new Array(cards.length).fill(0);
   return bonusCards + 1 +
     wonCards(
       rest,
