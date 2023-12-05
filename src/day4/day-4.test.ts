@@ -1,9 +1,9 @@
-import { beforeEach, describe, expect, it } from "../deps.ts";
-import { readLine } from "./parse/read-line.ts";
-import { computePoints } from "./points/compute-points.ts";
-import { sum } from "../day3/sum.ts";
-import { computeWinningNumbers } from "./points/compute-winning-numbers.ts";
-import { wonCards } from "./cards/won-cards.ts";
+import {beforeEach, describe, expect, it} from "../deps.ts";
+import {readLine} from "./parse/read-line.ts";
+import {computePoints} from "./points/compute-points.ts";
+import {sum} from "../sum.ts";
+import {computeWinningNumbers} from "./points/compute-winning-numbers.ts";
+import {wonCards} from "./cards/won-cards.ts";
 
 const day4FirstIteration = (lines: string[]) =>
   lines
