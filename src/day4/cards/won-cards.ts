@@ -7,10 +7,10 @@ export const wonCards = (
     return 0;
   }
   const [firstCard, ...rest] = cards;
-  const [firstBonus, ...otherBonuses] = bonuses;
-  const nextBonuses = otherBonuses
+  const [bonusCards, ...nextCardsBonuses] = bonuses;
+  const nextBonuses = nextCardsBonuses
     .map((bonus) =>
-      firstCard.winningNumbers-- ? bonus + firstBonus + 1 : bonus
+      firstCard.winningNumbers-- ? bonus + bonusCards + 1 : bonus
     );
-  return firstBonus + 1 + wonCards(rest, nextBonuses);
+  return bonusCards + 1 + wonCards(rest, nextBonuses);
 };
