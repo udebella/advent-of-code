@@ -6,6 +6,6 @@ const computeWinningNumbers = (game: Game) => ({
 });
 
 export const computePoints = (game: Game) => {
-  const numberOfValidNumbers = computeWinningNumbers(game).winningNumbers;
-  return numberOfValidNumbers ? Math.pow(2, numberOfValidNumbers - 1) : 0;
+  const { winningNumbers } = computeWinningNumbers(game);
+  return winningNumbers ? Math.pow(2, winningNumbers - 1) : 0;
 };
